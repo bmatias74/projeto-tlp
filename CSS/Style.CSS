@@ -116,14 +116,17 @@ main{
     margin: auto;
     padding: 10px;
     margin-left: 10px;
+    align-items: center;
+    columns: 3;
 }
 .imagens img{
-    
+    display: block;
+    margin: auto;
     width: 100px;
     height: 100px;
 } 
 .content1, .content2, .content3{
-    
+  
 }
 .imagens .desc{
    display: block;
