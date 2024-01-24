@@ -112,6 +112,19 @@ main{
     box-sizing: border-box; 
     border-radius: 5px;
 }
+.imagens{
+    padding: 10px;
+    margin-left: 10px;
+}
+.imagens img{
+    margin: auto;
+    width: 100px;
+    height: 100px;
+} 
+.imagens .desc{
+   display: block;
+    margin: auto;
+}
 footer{
     margin-bottom: 0;
     background-color: #3a2c08;
