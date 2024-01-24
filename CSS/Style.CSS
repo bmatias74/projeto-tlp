@@ -113,14 +113,18 @@ main{
     border-radius: 5px;
 }
 .imagens{
+    margin: auto;
     padding: 10px;
     margin-left: 10px;
 }
 .imagens img{
-    margin: auto;
+    
     width: 100px;
     height: 100px;
 } 
+.content1, .content2, .content3{
+    
+}
 .imagens .desc{
    display: block;
     margin: auto;
