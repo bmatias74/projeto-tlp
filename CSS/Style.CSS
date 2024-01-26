@@ -107,31 +107,31 @@ main{
     background-color: white;
     margin: 0 auto; 
    width: 95%;
-    padding: 10px;
+    padding: 20px;
     height: 100vh;
     box-sizing: border-box; 
     border-radius: 5px;
 }
 .imagens{
-    margin: auto;
+    margin-left: 10px;
+   position: relative;
+   top: 5%;
+   left: 5%;
     padding: 10px;
     margin-left: 10px;
     align-items: center;
-    columns: 3;
+    columns: 4;
 }
 .imagens img{
-    display: block;
-    margin: auto;
+    
+  
     width: 100px;
     height: 100px;
 } 
-.con1, .con2, .con3{
-  
+label{
+  display: block;
 }
-.imagens .desc{
-   display: block;
-    margin: auto;
-}
+
 footer{
     margin-bottom: 0;
     background-color: #3a2c08;
