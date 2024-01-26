@@ -128,9 +128,7 @@ main{
     width: 100px;
     height: 100px;
 } 
-.co1 , .co2, .co3{
-    border-radius: 20px;
-}
+
 label{
   display: block;
 }
