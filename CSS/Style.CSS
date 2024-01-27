@@ -121,6 +121,7 @@ main{
     margin-left: 10px;
     align-items: center;
     columns: 4;
+    
 }
 .imagens img{
     
@@ -128,10 +129,15 @@ main{
     width: 100px;
     height: 100px;
 } 
-
-label{
-  display: block;
+.co{
+    display: flexbox;
+    background-color: var(--cescuro);
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
 }
+
+
 
 footer{
     margin-bottom: 0;
