@@ -30,11 +30,14 @@ header{
 background-color: var(--cheader);
 padding: 10px;
 display: flex;
-top: 0; 
+
+
+}
+.header{
+    top: 0; 
  z-index: 1000;
 
 position: sticky;
-
 }
  .logo {
     display: flex;
@@ -52,7 +55,7 @@ margin: 0;
 }
 nav {
     background-color: var(--cescuro);
-  display: inline-block;
+  
 
   }
   
@@ -162,6 +165,8 @@ main{
 
 .co label{
  border: 1px solid black;
+ display: flex;
+ align-items: flex-end;
 }
 
 footer{
