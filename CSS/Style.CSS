@@ -24,13 +24,14 @@ body{
     margin: 0;
 }
 
+
 header{
 
 background-color: var(--cheader);
 padding: 10px;
 display: flex;
 top: 0; 
- z-index: 10001;
+ z-index: 1000;
 
 position: sticky;
 }
@@ -40,7 +41,7 @@ height: 80px;
 width: 80px;
 }
 header >  h1{
-    flex-grow: 1; 
+    flex-grow: 1;
    
 text-align: center;
 padding: 10px;
@@ -50,8 +51,8 @@ margin: 0;
 }
 nav {
     background-color: var(--cescuro);
- 
-position: fixed ;
+  
+
   }
   
   nav ul {
@@ -143,6 +144,10 @@ main{
     width: 57%;
   height: auto;
 } 
+.imagens a{
+    padding-top: 10px;
+    text-align: center;
+}
 .co{
     display: flex;
     flex-direction: column;
@@ -155,7 +160,7 @@ main{
 
 
 .co label{
- 
+ border: 1px solid black;
 }
 
 footer{
