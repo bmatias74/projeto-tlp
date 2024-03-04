@@ -21,8 +21,8 @@ p{
 }
 body{
     background-image: linear-gradient(to bottom, #8b6944,#A16A18, #7c5315);
-   
- 
+    box-sizing: border-box;
+    
     overflow-x: hidden;
     margin: 0;
 }
@@ -156,7 +156,6 @@ main{
     align-items: center;
     columns: 4;
    row-gap: 50px;
-    
 }
 
 

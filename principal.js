@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
          else if (window.innerWidth < 995) {
             itemsPerPage = 9; 
         } else {
-            itemsPerPage = 15; 
+            itemsPerPage = 8; 
         }
       }
        
