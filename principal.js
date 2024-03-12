@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let itemsPerPage = 8; 
     const coItems = document.querySelectorAll('.co');
     let totalPages = Math.ceil(coItems.length / itemsPerPage);
-    let currentPage = 18;
+    let currentPage = 1;
 
     function showPage(page) {
         const start = (page - 1) * itemsPerPage;
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
          else if (window.innerWidth < 995) {
             itemsPerPage = 9; 
         } else {
-            itemsPerPage = 8; 
+            itemsPerPage = 12; 
         }
       }
        

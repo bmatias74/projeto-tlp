@@ -4,6 +4,7 @@
     --cpadrao: #A16A18;
     --cheader: #A18B18;
     --cescuro:#59440D;
+    --cbutton: #866122;
     --fdestaque:  'Saira Semi Condensed','Bebas Neue', sans-serif;
     --cordefundo: white;
     --mpesquisah: 5vmin;
@@ -25,6 +26,7 @@ body{
     
     overflow-x: hidden;
     margin: 0;
+    
 }
 
 
@@ -56,6 +58,37 @@ font-family:var(--fdestaque) ;
 margin: 0;
 
 }
+
+.button {
+    display: inline-block; 
+    margin: 10px; 
+    border-radius: 8px; 
+    overflow: hidden;
+    transition: transform 0.3s ease; 
+}
+
+.button a {
+    display: block; 
+    background-color: var(--cbutton);
+    text-decoration: none;
+    margin-right: 15px;
+    color: black;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer; 
+    margin-left: 10px ;
+    transition: background-color 0.3s ease; 
+}
+
+.button a:hover {
+    background-color: var(--cheader); 
+    color: #fff;
+}
+
+
+
 nav {
     background-color: var(--cescuro);
     padding: 10px;
@@ -69,7 +102,7 @@ nav {
     
   }
   
-  nav a {
+  nav a  {
     text-decoration: none;
     margin-right: 15px;
     color: black;
@@ -138,13 +171,15 @@ nav {
 
 main{
     background-color: var(--cordefundo);
-    margin: 0 auto; 
+    margin: 0 auto;
    width: 95%;
     padding: 20px;
-    height: 100vh;
+    height: auto;
     box-sizing: border-box; 
     border-radius: 5px;
+
 }
+
 .imagens{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -192,7 +227,8 @@ main{
 }
 #pagination-container {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     padding: 20px;
     overflow: hidden;
 }
@@ -204,6 +240,7 @@ main{
     background-color: var(--cpadrao);
     color: white;
     cursor: pointer;
+   margin-top: 1%;
     transition: 0.3s;
 }
 
