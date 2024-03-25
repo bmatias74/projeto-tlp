@@ -1,7 +1,17 @@
 <?php
-define("SERVIDOR","localhost");
-define("USER","root");
-define("SENHA","");
-define("BD","dbsisagendador");
+if (!defined("SERVIDOR")) {
+    define("SERVIDOR", "localhost");
+}
 
+if (!defined("USER")) {
+    define("USER", "root");
+}
+
+if (!defined("SENHA")) {
+    define("SENHA", "");
+}
+
+if (!defined("BD")) {
+    define("BD", "");
+}
 ?>
