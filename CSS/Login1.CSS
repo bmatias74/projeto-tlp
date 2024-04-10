@@ -77,7 +77,7 @@ main{
     height: 100vh;
     box-sizing: border-box; 
     border-radius: 5px;
-    
+    height: auto;
 }
 h1{
     text-align: center;

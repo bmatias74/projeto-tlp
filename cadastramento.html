@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro</title>
-    <link rel="stylesheet" href="CSS/Login.CSS">
+    <link rel="stylesheet" href="CSS/Login1.CSS">
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 </head>
 <header>
@@ -21,30 +21,31 @@
       <hr>
         <form action="cadastro.php" method="post">
             <div class="inputg">
+               <!-- Nome--> 
              <label for="nome">Nome<span class="obrigatorio">*</span></label>
               <input type="text" placeholder="Insira o nome completo" name="Nome" required>
-  
+               <!-- Email--> 
               <label for="email">Email<span class="obrigatorio">*</span></label>
               <input type="email" placeholder="Insira o email" name="Email" required>
-
+             <!-- Telefone--> 
               <label for="telefone">Telefone<span class="obrigatorio">*</span></label>
-              <input type="number" placeholder="Insira o número de telefone" name="Telefone" min="0" max="999999999" required>
-
-             
+              <input type="number" placeholder="Insira o número de telefone" name="telefone" id="telefone"  maxlength="9" required>
+              <small id="telefone-error" style="color: red; display: none;">O número de telefone deve ter exatamente 9 dígitos.</small>
+              <!-- Data de nascimento--> 
               <label for="data">data de enascimento<span class="obrigatorio">*</span></label>
               <input type="date" id="datadenascimento" name="datadenascimento">
-              
+               <!-- Senha--> 
               <label for="senha">criarsenha<span class="obrigatorio">*</span></label>
               <input type="password" name="criarsenha"
               placeholder="Digite a senha" 
               title="Deve conter pelo menos um número, um letra maiúscula e minúscula, e pelo menos 8 ou mais caracteres" required>
-              
+               <!-- Confirmar a senha--> 
               <label for="csenha">confirmarsenha<span class="obrigatorio">*</span></label>
               <input type="password" placeholder="Repita a senha" name="confirmarsenha"
               title="Deve conter pelo menos um número, um letra maiúscula e minúscula, e pelo menos 8 ou mais caracteres"  required>
         </div>
           <button name="cadastrar">cadastrar</button>
-          <p class="message">Já tem conta? <a href="login.html">Iniciar Sessão</a>
+          <p >Já tem conta? <a href="login.html">Iniciar Sessão</a>
         </form>
     </div>
     
@@ -53,5 +54,18 @@
    <footer>
     <p>Site criado por <strong>Tchibiye</strong></p>
      </footer>
+     <script>
+      const inputtelefone= document.getElementById('telefone');
+      const telefoneError = document.getElementById('telefone-error');
+      inputtelefone.addEventListener('input', function (){
+        const telefone = this.value.trim();
+        if (telefone.length !== 9 || !/^\d+$/.test(telefone)) {
+            telefoneError.style.display = 'block';
+        } else {
+            telefoneError.style.display = 'none';
+        }
+      }
+       )
+     </script>
 </body>
 </html>
