@@ -12,6 +12,6 @@ if (!defined("SENHA")) {
 }
 
 if (!defined("BD")) {
-    define("BD", "");
+    define("BD", "bdcokulimer");
 }
 ?>
