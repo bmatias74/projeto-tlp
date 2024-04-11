@@ -28,20 +28,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateItemsPerPage() {
-      if (window.innerWidth < 290){
-        itemsPerPage = 3;
-      }
-      else{
-        if (window.innerWidth < 445) {
-            itemsPerPage = 6; 
-        }
-         else if (window.innerWidth < 995) {
-            itemsPerPage = 9; 
-        } else {
-            itemsPerPage = 12; 
-        }
-      }
-       
+        if (window.innerWidth < 290) {
+            itemsPerPage = 3;
+          } else if (window.innerWidth < 445) {
+            itemsPerPage = 6;
+          } else if (window.innerWidth < 995) {
+            itemsPerPage = 9;
+          } else {
+            itemsPerPage = 12;
+          }
         showPage(currentPage); 
     }
 

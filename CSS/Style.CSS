@@ -178,7 +178,7 @@ main{
     height: auto;
     box-sizing: border-box; 
     border-radius: 5px;
-
+    
 }
 
 .imagens{
@@ -260,6 +260,7 @@ footer{
     box-sizing: border-box; 
     padding: 10px;
     overflow: hidden;
+    
 }
 footer p{
     text-align: center;
