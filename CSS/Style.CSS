@@ -173,7 +173,10 @@ nav {
     background: azure;
     transition: background-color 1s ease; 
 }
-
+ 
+#erasebtn{
+    display: none; 
+}
 
 main{
     background-color: var(--cordefundo);

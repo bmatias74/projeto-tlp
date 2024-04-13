@@ -55,7 +55,7 @@ session_start();
           <h1> Site</h1>
             <div class="search-box">
                   <input class="search-text" type="text" id="searchInput" placeholder="Pesquise aqui">
-                  <p id="">limpar</p>
+                <a id="erasebtn" href="#"><img src="IMG/bxs-eraser.svg" alt=""></a>
               <a class="search-btn" id="searchbtn" href="#">
                 
                       <img src="IMG/loupe-svgrepo-com.svg" alt="lupa" height="19" width="19">
@@ -75,9 +75,6 @@ session_start();
     <div id="settingsMenu" class="settings-menu hidden">
         <ul>
             <li><a href="#">Perfil</a></li>
-            <li><a href="#">Notificações</a></li>
-            <li><a href="#">Privacidade</a></li>
-            <li><a href="#">Ajuda</a></li>
             <li><a href="logout.php">Sair</a></li>
         </ul>
     </div>

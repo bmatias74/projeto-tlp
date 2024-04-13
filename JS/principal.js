@@ -114,5 +114,29 @@ document.addEventListener('DOMContentLoaded', function() {
       event.stopPropagation(); // Impede que o clique propague para elementos pai
   });
 });
+//botão de limpar
+const eraseButton = document.getElementById('erasebtn');
+let searchInput = document.getElementById('searchInput');
+
+
+searchInput.addEventListener('load', function() {
+ 
+});
+
+
+searchInput.addEventListener('input', function() {
+  if (searchInput.value.length > 0) {
+    eraseButton.style.display = 'block'; 
+  } else {
+    eraseButton.style.display = 'none'; 
+  }
+});
+
+eraseButton.addEventListener('click', function() {
+  searchInput.value = '';
+  eraseButton.style.display = 'none'; 
+});
+
+
 
 
