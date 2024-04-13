@@ -1,6 +1,7 @@
 <?php
 include "db/conexao.php";
 
+
 // Função para processar o upload da imagem
 function processImageUpload($conexao, $imageField, $nome) {
     if(isset($_FILES[$imageField]["name"])) {
@@ -38,7 +39,7 @@ $twitter = mysqli_real_escape_String($conexao, $_POST["twitter"]);
 $instagram = mysqli_real_escape_String($conexao, $_POST["instagram"]);
 
 // Primeiro, insira o registro básico do restaurante
-$query = "INSERT INTO restaurante (nome, email_r,telefone,telefone2,descricao,localizacao,facebook,twitter,instagram) VALUES ('$nome', '$email','$telefone','$telefone2','$descricao','$localizacao','$facebook','$twitter','$instagram')";
+$query = "INSERT INTO restaurante (nome, email,telefone,telefone2,descricao,localizacao,facebook,twitter,instagram) VALUES ('$nome', '$email','$telefone','$telefone2','$descricao','$localizacao','$facebook','$twitter','$instagram')";
 mysqli_query($conexao, $query);
 
 // Recupera o ID do último restaurante inserido

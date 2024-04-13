@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include_once("db/conexao.php");
 
     $email = $_POST["email"];
-    $password = $_POST["senha"];
+    $password = $_POST["password"];
 
     $result = mysqli_query($conexao, "SELECT * FROM adm WHERE email='$email'");
 
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['email'] = $email; 
 
-                header("Location: ADM.php");
+                header("Location: adm.php");
                 exit(); 
             } else {
                 
@@ -36,30 +36,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinica IPPS - Painel Administrativo</title>
-    <link rel="stylesheet" href="css\style2.css">
+    <title>login</title>
+    <link rel="stylesheet" href="CSS/Login.CSS">
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 </head>
+<body >
+   
+ 
+      <header>
+          <a href="index.php"><img  class="logo" src="logo.png" alt=""></a>
+        <h1> Site</h1>
+      </header>
 
-<body>
+<main>
 
-<section>
-        <form action="admlogin.php" method="post" class="input-box">
 
-        <h1>Login admnistrativo</h1>
+<div class="formulario">
+    <h1>Olá, que saudades</h1>
+    <hr>
+<form action="admlogin.php" method="post">
+<div class="inputg">
+ <label for="email"> E-mail/Nome de usuário</label>
+ <input type="text" name="email" id="email" placeholder="Introduza o E-mail ou o nome de usuário" required>
 
-<input type="email" name="email" id="" placeholder="Email" required>
-<input type="password" name="senha" id="" placeholder="Senha" required>
-<div class="login-button">
-<button type="submit" style="height: 6vh; background-color:greenyellow;">Entrar</button>
+    <label for="password"> Palavra-passe</label>
+ <input type="password" name="password" id="password" placeholder="Insira a sua palavra-passe" required>
+ </div>
+ 
+<button type="submit" > Entrar</button>
+ <p > Não possuis conta? <a href="tela de cadastramento adm.php">Cadastre-se</a>
+</form>
 </div>
+</main>
+<footer>
+<p>Site criado por <strong>Tchibiye</strong></p>
+</footer>
 
-        </form>
 </body>
-
-</section>
 </html>

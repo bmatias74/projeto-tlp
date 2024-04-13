@@ -1,3 +1,35 @@
+<?php
+    include("db/conexao.php");
+    include('auth.php');
+
+    verificarSessao();
+
+    $email = $_SESSION['emailu'];
+
+    // Preparar a consulta
+    $stmt = $conexao->prepare("SELECT nome FROM usuario WHERE email=?");
+
+    // Vincular o parâmetro de e-mail
+    $stmt->bind_param("s", $email);
+
+    // Executar a consulta
+    $stmt->execute();
+
+    // Vincular a variável de resultado
+    $stmt->bind_result($nome);
+
+    // Buscar o resultado
+    $stmt->fetch();
+
+    // Fechar a consulta
+    $stmt->close();
+
+    // Agora, $nome contém o nome do administrador com o e-mail fornecido
+
+    $_SESSION['nome']=$nome;
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
@@ -22,7 +54,7 @@
         <img src="IMG/loupe-svgrepo-com.svg" alt="lupa" height="19" width="19">
             </a>
           </div>
-          <p class="button"> <a href="cadastramento.html">Cadastre-se</a> </p>
+          <p class="button"> <a href="cadastramento.php">Cadastre-se</a> </p>
           <p class="button"><a href="login.html">Login</a></p>
         </header>
          <nav>

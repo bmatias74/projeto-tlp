@@ -9,11 +9,12 @@
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="CSS/styler.CSS">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
     <title>Inserir restaurante</title>
 </head>
 <body>
 <header>
-          <a href="index.htm"><img  class="logo" src="logo.png" alt=""></a>
+          <a href="index.php"><img  class="logo" src="logo.png" alt=""></a>
         <h1> Inserir restaurante</h1>
       </header>
 <main>
@@ -43,15 +44,15 @@
               </div>
            
                <!-- Telefone--> 
-               <div>
-                 <label for="telefone">Telefone<span class="obrigatorio">*</span></label>
-                               <input type="number" placeholder="Insira o número de telefone" name="telefone" id="telefone"  maxlength="9" required>
-                               <small id="telefone-error" style="color: red; display: none;">O número de telefone deve ter exatamente 9 dígitos.</small>
-               </div>
+                <div>
+                      <label for="telefone"> Telefone</label>
+                              <input type="telephone" name="telefone" id="telefone" placeholder="Telefone" required maxlength="9">
+                              <small id="telefone-error" style=" display: none;">O número de telefone deve ter exatamente 9 dígitos.</small>
+                </div>
                 <!-- Telefone2--> 
                 <div>
                   <label for="telefone2">Telefone opcional</span></label>
-                                <input type="number" placeholder="Insira o número de telefone" name="telefone2" id="telefone2"  maxlength="9" >
+                                <input type="telephone" placeholder="Insira o número de telefone" name="telefone2" id="telefone2"  maxlength="9" >
                                 <small id="telefone-error2" style="color: red; display: none;">O número de telefone deve ter exatamente 9 dígitos.</small>
                 </div>
               <!-- Descrição--> 
@@ -159,10 +160,8 @@
     <p>Site criado por <strong>Tchibiye</strong></p>
      </footer>
      <script>
-      const inputtelefone= document.getElementById('telefone');
+     const inputtelefone= document.getElementById('telefone');
       const telefoneError = document.getElementById('telefone-error');
-      const inputtelefone2= document.getElementById('telefone2');
-      const telefoneError2 = document.getElementById('telefone-error2');
       inputtelefone.addEventListener('input', function (){
         const telefone = this.value.trim();
         if (telefone.length !== 9 || !/^\d+$/.test(telefone)) {
@@ -172,6 +171,9 @@
         }
       }
        )
+      const inputtelefone2= document.getElementById('telefone2');
+      const telefoneError2 = document.getElementById('telefone-error2');
+      
        inputtelefone2.addEventListener('input', function (){
         const telefone2 = this.value.trim();
         if (telefone2.length !== 9 || !/^\d+$/.test(telefone2)) {
