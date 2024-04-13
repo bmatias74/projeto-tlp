@@ -1,11 +1,15 @@
 <?php
+session_start();
     include("db/conexao.php");
-    include('auth.php');
+ 
 
-    verificarSessao();
+    $logado  = false;
 
+    if (isset($_SESSION['emailu'])) {
+      $email = $_SESSION['emailu'];
+      $logado = true;
     $email = $_SESSION['emailu'];
-
+    }
     // Preparar a consulta
     $stmt = $conexao->prepare("SELECT nome FROM usuario WHERE email=?");
 
@@ -37,8 +41,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KINO</title>
     <link rel="stylesheet" href="CSS/Style.CSS">
+    <link rel="stylesheet" href="CSS/configstyle.css">
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
-    <script src="JS/principal.js"></script>
+
 </head >
 <body >
    
@@ -49,13 +54,37 @@
         
           <h1> Site</h1>
             <div class="search-box">
-            <input class="search-text" type="text" placeholder="Pesquise aqui">
-            <a class="search-btn" href="#">
-        <img src="IMG/loupe-svgrepo-com.svg" alt="lupa" height="19" width="19">
-            </a>
+                  <input class="search-text" type="text" id="searchInput" placeholder="Pesquise aqui">
+                  <p id="">limpar</p>
+              <a class="search-btn" id="searchbtn" href="#">
+                
+                      <img src="IMG/loupe-svgrepo-com.svg" alt="lupa" height="19" width="19">
+              </a>
           </div>
-          <p class="button"> <a href="cadastramento.php">Cadastre-se</a> </p>
-          <p class="button"><a href="login.html">Login</a></p>
+         
+   
+          <div class="placa_boa">
+         <?php if ($logado): ?>
+        <p>Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?></p>
+    <?php else: ?>
+        <p>Olá, visitante!</p>
+    <?php endif; ?>
+      </div>
+      <?php if ($logado): ?>
+      <button id="settingsBtn" class="menu-btn"><img src="IMG/gear-svgrepo-com.svg" alt="engrenagem" height="19" width="19"></button>
+    <div id="settingsMenu" class="settings-menu hidden">
+        <ul>
+            <li><a href="#">Perfil</a></li>
+            <li><a href="#">Notificações</a></li>
+            <li><a href="#">Privacidade</a></li>
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="logout.php">Sair</a></li>
+        </ul>
+    </div>
+    <?php else: ?>
+    <p class="button"> <a href="cadastramento.php">Cadastre-se</a> </p>
+    <p class="button"><a href="login.php">Login</a></p>
+    <?php endif; ?>  
         </header>
          <nav>
           <ul>
@@ -69,7 +98,7 @@
   <article>
   
   <?php
-include "db/conexao.php"; // Inclui o arquivo de conexão
+
 
 $query = "SELECT nome, imagem_p FROM restaurante"; // Consulta para buscar as imagens
 $result = mysqli_query($conexao, $query);
@@ -103,6 +132,6 @@ mysqli_close($conexao); // Fecha a conexão com o banco de dados
  <footer>
 <p>Site criado por <strong>Tchibiye</strong></p>
  </footer>
-
+ <script src="JS/principal.js"></script>
 </body>
 </html>

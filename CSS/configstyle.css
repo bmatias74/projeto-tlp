@@ -1,0 +1,78 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Saira+Semi+Condensed&display=swap');
+:root{
+    --cpadrao: #A16A18;
+    --cheader: #A18B18;
+    --cescuro:#59440D;
+    --cbutton: #D68D20;
+    --fdestaque:  'Saira Semi Condensed','Bebas Neue', sans-serif;
+    --cordefundo: white;
+    --mpesquisah: 5vmin;
+    
+}
+*{
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+
+}
+.placa_boa{
+margin: 10px;
+}
+.placa_boa p{
+    font-family: var(--fdestaque);
+}
+.menu-btn {
+    background-color: transparent;
+    border: none;
+    
+      border-radius:  var(--mpesquisah);
+      height: var(--mpesquisah);
+      width: auto;
+    
+}
+.menu-btn img{
+    background-color: transparent;
+    border: none;
+    
+      border-radius:  var(--mpesquisah);
+      height: var(--mpesquisah);
+      width: auto;
+    
+}
+.settings-menu {
+    position: absolute;
+    background-color: #AE9554;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 10px;
+    display: none; /* Inicialmente oculto */
+    top: 40px; /* Distância do botão */
+    right: 10px; /* Alinhado à direita do botão */
+    width: 200px;
+}
+
+.settings-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.settings-menu ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 8px 12px;
+}
+
+.settings-menu ul li a:hover {
+    background-color: var();
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}

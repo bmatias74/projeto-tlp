@@ -4,11 +4,11 @@
     --cpadrao: #A16A18;
     --cheader: #A18B18;
     --cescuro:#59440D;
-    --cbutton: #B39869;
+    --cbutton:#D68D20;
     --fdestaque:  'Saira Semi Condensed','Bebas Neue', sans-serif;
     --cordefundo: white;
     --mpesquisah: 5vmin;
-    
+    --cdestaque: #D68D20;
 }
 *{
     font-family: sans-serif;
@@ -116,7 +116,8 @@ nav {
 }
 .search-box{
     position: static;
-  margin-left: auto;
+   
+  margin: auto;
     background-color: #7A5112;
     padding: 10px;
     border-radius:  var(--mpesquisah);
@@ -124,51 +125,55 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 10px;
+   
     overflow: hidden;
 }
-
-.search-text{
+.search-text {
     border: none;
     background: none;
     outline: none;
-    padding: 0;
     color: white;
-    line-height: 20px;
-    font-size: 16px;
-    width: 0;
-    transition: 1s;
-    pointer-events: none;
+    line-height: 2em;
+    font-size: 1em;
+    width: 0;  
+    padding: 0;
+    transition: width 1s ease, padding 0.5s ease 0.5s;
+    pointer-events: none; 
 }
+
 .search-text:focus {
-      border-radius: 40px;
-      background-color: azure; 
-      color: rgb(0, 0, 0) ;
-      border: 1px solid var(--cpadrao); 
-  }
-::-webkit-input-placeholder{
+    border-radius: 40px;
+    background-color: azure;
+    color: rgb(0, 0, 0);
+    border: 1px solid var(--cpadrao);
+}
+
+::-webkit-input-placeholder {
     color: #D68D20;
 }
-.search-btn{
+
+.search-btn {
     height: var(--mpesquisah);
     width: var(--mpesquisah);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 1s;
+    transition: background-color 1s ease; 
 }
-.search-box:hover .search-text{
-    width: 25vmin;
-    transition: 1s;
+
+.search-box.active .search-text {
+    width: 45vmin; 
     padding: 0 6px;
-    pointer-events: all;
+    pointer-events: all; 
+    transition: width 1s ease, padding 0.5s ease; 
 }
-.search-box:hover .search-btn{
+
+.search-box:hover .search-btn {
     background: azure;
-    transition: 1s;
-   
+    transition: background-color 1s ease; 
 }
+
 
 main{
     background-color: var(--cordefundo);
@@ -260,7 +265,7 @@ footer{
     box-sizing: border-box; 
     padding: 10px;
     overflow: hidden;
-    
+
 }
 footer p{
     text-align: center;

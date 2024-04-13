@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include_once("db/conexao.php");
 
     $email = $_POST["email"];
-    $password = $_POST["senha"];
+    $password = $_POST["password"];
 
     $result = mysqli_query($conexao, "SELECT * FROM usuario WHERE email='$email'");
 
