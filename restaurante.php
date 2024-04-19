@@ -85,7 +85,7 @@ session_start();
         </header>
          <nav>
           <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="#">Fale Conosco</a></li>
           </ul>
             </nav>
@@ -95,9 +95,8 @@ session_start();
   <article>
   
   <?php
-
-
-$query = "SELECT * FROM restaurante"; // Consulta para buscar as imagens
+$idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
+$query = "SELECT * FROM restaurante where id = {$idrestaurante}"; // Consulta para buscar as imagens
 $result = mysqli_query($conexao, $query);
 
 if (mysqli_num_rows($result) > 0) {
@@ -106,16 +105,16 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $imageUrl = $row['imagem_p']; // Caminho da imagem
         $nomeRestaurante = $row['nome']; // Nome do restaurante
-        $restauranteId = $row['id']; // Id do restaurante
+       $descricao = $row['descricao']; // desecricao do restaurante
         // HTML para cada restaurante
         echo '<div class="co">';
-        echo "<a href='restaurante.php?id=$restauranteId'><img src='IMG_restaurante/$imageUrl' alt='Restaurante $nomeRestaurante'></a>";
+        echo "<a href=''><img src='IMG_restaurante/$imageUrl' alt='Restaurante $nomeRestaurante'></a>";
         echo "<figcaption for='text'> $nomeRestaurante</figcaption>";
         echo '</div>';
     }
 
     echo '</div>';
-    echo '<div id="pagination-container"></div>';
+    
 } else {
     echo "<p>Nenhuma imagem encontrada.</p>";
 }
@@ -130,6 +129,6 @@ mysqli_close($conexao); // Fecha a conexão com o banco de dados
  <footer>
 <p>Site criado por <strong>Tchibiye</strong></p>
  </footer>
- <script src="JS/principal.js"></script>
+
 </body>
 </html>

@@ -128,38 +128,47 @@ $stmti->close();
         case 'consulta':
           include("consulta/consulta.php");
           break;
-          case 'editar':
-            include("consulta/editar.php");
+        case 'editar':
+          include("consulta/editar.php");
+          break;
+        case 'atualizar':
+          include("consulta/atualizar.php");
+          break;
+          case 'atualizarr':
+            include("consulta/atualizarr.php");
             break;
-            case 'atualizar':
-              include("consulta/atualizar.php");
-              break;
-              case 'excluirp':
-                include("consulta/excluirp.php");
-                break;
-                case 'certeza':
-                  include("consulta/certeza.php");
-                  break;
-                  case 'tenscerteza':
-                    include("consulta/tenscerteza.php");
-                    break;
-              case 'excluir':
-                include("consulta/excluir.php");
-                break;
-                
-                case 'config':
-                  include("consulta/configadm.php");
-                  break;
-                  case 'editaradm':
-                    include("ADM/editaradm.php");
-                    break;
-                    case 'atualizaradm':
-                      include("ADM/atualizaradm.php");
-                      break;
-                      case 'insrrestaurante':
-                      
-                        header("Location:./inserir restaurante.php");
-                        break;
+        case 'excluirp':
+          include("consulta/excluirp.php");
+          break;
+        case 'certeza':
+          include("consulta/certeza.php");
+          break;
+        case 'tenscerteza':
+          include("consulta/tenscerteza.php");
+          break;
+        case 'excluir':
+          include("consulta/excluir.php");
+          break;
+              
+        case 'config':
+          include("consulta/configadm.php");
+          break;
+        case 'editaradm':
+          include("ADM/editaradm.php");
+          break;
+        case 'editar':
+          include("home/editar.php");
+          break;
+          case 'editarr':
+            include("consulta/editarr.php");
+            break;
+        case 'atualizaradm':
+          include("ADM/atualizaradm.php");
+          break;
+        case 'insrrestaurante':
+        
+          header("Location:./inserir restaurante.php");
+          break;
         default: //caso n tenha nada a escolher ele vai pra home
           include("home/home.php");
           break;

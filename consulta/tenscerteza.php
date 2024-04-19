@@ -2,7 +2,7 @@
     <h2>Excluir</h2>
 </header>
 <?php 
-$ID_consulta =  mysqli_real_escape_string($conexao, $_GET["idpaciente"]);
+$ID_restaurante =  mysqli_real_escape_string($conexao, $_GET["idrestaurante"]);
 
 
         ?>
@@ -11,7 +11,7 @@ $ID_consulta =  mysqli_real_escape_string($conexao, $_GET["idpaciente"]);
                 var confirmar = confirm("Tem certeza que deseja deletar esta consulta?");
                 if(confirmar) {
                     // Se o usuário confirmar, redirecione para a página que irá processar a deleção
-                    window.location.href = "ADM.php?menuop=excluir&idpaciente=<?php echo $ID_consulta; ?>";
+                    window.location.href = "ADM.php?menuop=excluir&idrestaurante=<?php echo $ID_restaurante; ?>";
                  }
                 else {
                     // Se o usuário cancelar, redirecione de volta para a página inicial

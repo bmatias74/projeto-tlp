@@ -3,10 +3,10 @@
 </header>
 <?php
 
-$idtchibiye =  mysqli_real_escape_string($conexao, $_GET["idpaciente"]);
-$sql= "DELETE FROM tbpaciente WHERE ID_Paciente= {$idtchibiye}"; 
+$idtchibiye =  mysqli_real_escape_string($conexao, $_GET["idrestaurante"]);
+$sql= "DELETE FROM restaurante WHERE id= {$idtchibiye}"; 
 $resultado = mysqli_query($conexao,$sql) or die("Erro ao recuperar os dados.". mysqli_error($conexao));
-header("Location: ADM.php?menuop=consulta");
+header("Location: adm.php?menuop=consulta");
 echo "mambo bem eliminado";
 
 

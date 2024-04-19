@@ -3,8 +3,13 @@
     --cpadrao: #A16A18;
     --cescuro:#59440D; 
 }
+* {
+    margin: 0;
+    padding: 0;
+}
 body {
     font-family: Arial, sans-serif;
+   
 }
 
 header {
@@ -40,7 +45,10 @@ input[type="submit"], .button {
     border-radius: 5px;
     cursor: pointer;
 }
+.table{
+    overflow: auto;
 
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -49,6 +57,7 @@ table {
 th, td {
     padding: 5px;
     border: 1px solid #ccc;
+
 }
 
 thead, .tcabeca {

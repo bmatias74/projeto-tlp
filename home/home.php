@@ -34,79 +34,79 @@
     }
     ?>
 </div>
-<table border="1">
-    <thead>
-        <tr>
-            <th><a class="ordem" href="?menuop=consulta&organiza=id">ID_usuario</a></th>
-            <th><a class="ordem" href="?menuop=consulta&organiza=nome">Nome</a></th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>Data de nascimento</th>
-            <th>Editar</a></th>
-            <th>Excluir</th>
-        </tr>
-    </thead>
-    <tbody>  
-      
-    <?php
-// Inicia a sessão ou continua a sessão já iniciada
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Se o valor 'muntchiya' foi enviado pelo formulário e é numérico, atualiza o valor na sessão
-if (isset($_POST['muntchiya']) && is_numeric($_POST['muntchiya'])) {
-    $_SESSION['muntchiya'] = intval($_POST['muntchiya']);
-}
-
-// Captura o critério de ordenação a partir da URL, com um valor padrão
-$ordenarPor = isset($_GET['organiza']) ? $_GET['organiza'] : 'id';
-
-// Lista de colunas permitidas para ordenação
-$colunasPermitidas = ['id', 'nome'];
-
-// Verifica se o valor de ordenarPor está na lista de colunas permitidas
-if (!in_array($ordenarPor, $colunasPermitidas)) {
-    $ordenarPor = 'id'; // Valor padrão caso não seja uma coluna permitida
-}
-
-$qtd = isset($_SESSION['muntchiya']) ? $_SESSION['muntchiya'] : 10;
-$pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
-$inicio = ($qtd * $pagina) - $qtd;
-
-
-$sql = "SELECT * FROM usuario
-        WHERE (id = '{$txt_pesquisa}' OR nome LIKE '%{$txt_pesquisa}%')
-        ORDER BY $ordenarPor ASC
-        LIMIT $inicio, $qtd";
-$resultado = mysqli_query($conexao, $sql) or die("Erro na consulta: " . mysqli_error($conexao));
-
-// Obtém a data atual no formato 'Y-m-d' para comparação
-$hoje = date('Y-m-d');
-
-// Loop para exibir as consultas
-while ($linha = mysqli_fetch_assoc($resultado)) {
-    // Verifica se a data da consulta é anterior à data atual
-    $data_consulta = date('Y-m-d', strtotime($linha["datadenascimento"]));
-    $row_style = ($data_consulta < $hoje) ? 'style="background-color: brown;"' : '';
-
-    echo "<tr $row_style>";
-    echo "<td>{$linha["id"]}</td>";
-    echo "<td>{$linha["nome"]}</td>";
-    echo "<td>{$linha["telefone"]}</td>";
-    echo "<td>{$linha["email"]}</td>";
-    echo "<td>{$linha["datadenascimento"]}</td>";
-    echo "<td><a href=\"adm.php?menuop=editar&idusuario={$linha["id"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/edit.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
-    echo "<td><a href=\"adm.php?menuop=certeza&idusuario={$linha["id"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/delete.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
-
-    echo "</tr>";
-
+<div class="table">
+    
+    <table>
+        <thead>
+            <tr>
+                <th><a class="ordem" href="?menuop=consulta&organiza=id">ID_usuario</a></th>
+                <th><a class="ordem" href="?menuop=consulta&organiza=nome">Nome</a></th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Data de nascimento</th>
+                <th>Editar</a></th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+        <?php
+    // Inicia a sessão ou continua a sessão já iniciada
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Se o valor 'muntchiya' foi enviado pelo formulário e é numérico, atualiza o valor na sessão
+    if (isset($_POST['muntchiya']) && is_numeric($_POST['muntchiya'])) {
+        $_SESSION['muntchiya'] = intval($_POST['muntchiya']);
+    }
+    
+    // Captura o critério de ordenação a partir da URL, com um valor padrão
+    $ordenarPor = isset($_GET['organiza']) ? $_GET['organiza'] : 'id';
+    
+    // Lista de colunas permitidas para ordenação
+    $colunasPermitidas = ['id', 'nome'];
+    
+    // Verifica se o valor de ordenarPor está na lista de colunas permitidas
+    if (!in_array($ordenarPor, $colunasPermitidas)) {
+        $ordenarPor = 'id'; // Valor padrão caso não seja uma coluna permitida
+    }
+    
+    $qtd = isset($_SESSION['muntchiya']) ? $_SESSION['muntchiya'] : 10;
+    $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+    $inicio = ($qtd * $pagina) - $qtd;
     
     
-}?>
-
-</tbody>
-</table>
+    $sql = "SELECT * FROM usuario
+            WHERE (id = '{$txt_pesquisa}' OR nome LIKE '%{$txt_pesquisa}%')
+            ORDER BY $ordenarPor ASC
+            LIMIT $inicio, $qtd";
+    $resultado = mysqli_query($conexao, $sql) or die("Erro na consulta: " . mysqli_error($conexao));
+    
+    // Obtém a data atual no formato 'Y-m-d' para comparação
+    $hoje = date('Y-m-d');
+    
+    // Loop para exibir as consultas
+    while ($linha = mysqli_fetch_assoc($resultado)) {
+        // Verifica se a data da consulta é anterior à data atual
+        echo "<tr>";
+        echo "<td>{$linha["id"]}</td>";
+        echo "<td>{$linha["nome"]}</td>";
+        echo "<td>{$linha["telefone"]}</td>";
+        echo "<td>{$linha["email"]}</td>";
+        echo "<td>{$linha["datadenascimento"]}</td>";
+        echo "<td><a href=\"adm.php?menuop=editar&idusuario={$linha["id"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/edit.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
+        echo "<td><a href=\"adm.php?menuop=certeza&idusuario={$linha["id"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/delete.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
+    
+        echo "</tr>";
+    
+    
+    
+    }?>
+    
+    </tbody>
+    </table>
+</div>
 <?php
 
 $sqlt = "SELECT id FROM usuario";

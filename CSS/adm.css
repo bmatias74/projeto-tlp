@@ -187,7 +187,8 @@ footer{
   background-color: var(--cescuro);
   box-sizing: border-box; 
   padding: 10px;
-  overflow: hidden;
+  overflow: hidden; 
+  width: 100%;
 }
 footer p{
   text-align: center;
