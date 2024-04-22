@@ -35,7 +35,7 @@ $morada = mysqli_real_escape_string($conexao, $_POST["localizacao"]);
 $facebook = mysqli_real_escape_string($conexao, $_POST["facebook"]);
 $twitter = mysqli_real_escape_string($conexao, $_POST["twitter"]);
 $instagram = mysqli_real_escape_string($conexao, $_POST["instagram"]);
-$id = $_POST["id"]; // This should be securely handled and validated
+$id = $_POST["id"]; 
 
 $stmt = $conexao->prepare("UPDATE restaurante SET nome = ?, telefone = ?, telefone2 = ?, email = ?, descricao = ?, web_loc= ?, morada = ?, facebook = ?, twitter = ?, instagram = ? WHERE id = ?");
 $stmt->bind_param("ssssssssssi", $nome, $telefone, $telefone2, $email, $descricao, $localizacao, $morada, $facebook, $twitter, $instagram, $id);
