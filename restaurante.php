@@ -42,17 +42,41 @@ session_start();
     <title>KINO</title>
     <link rel="stylesheet" href="CSS/Style.CSS">
     <link rel="stylesheet" href="CSS/configstyle.css">
+    <link rel="stylesheet" href="CSS/restaurante.css">
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 
 </head >
 <body >
+   <?php 
+  
+$idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
+$query = "SELECT * FROM restaurante where id = {$idrestaurante}"; // Consulta para buscar as imagens
+$result = mysqli_query($conexao, $query);
+
+if (mysqli_num_rows($result) > 0) {
+ 
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $imageUrl = $row['imagem_p']; // Caminho da imagem
+        $nomeRestaurante = $row['nome']; // Nome do restaurante
+       $descricao = $row['descricao']; // desecricao do restaurante
+    
+
+    }
+    
+} else {
+ 
+}
    
+   
+   ?>
+
       <div class="header">
         <header>
         
             <a href="#"><img  class="logo" src="logo.png" alt=""></a>
         
-          <h1> Site</h1>
+          <h1>  <?= $nomeRestaurante  ?></h1>
             <div class="search-box">
                   <input class="search-text" type="text" id="searchInput" placeholder="Pesquise aqui">
                 <a id="erasebtn" href="#"><img src="IMG/bxs-eraser.svg" alt=""></a>
@@ -95,6 +119,7 @@ session_start();
   <article>
   
   <?php
+
 $idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
 $query = "SELECT * FROM restaurante where id = {$idrestaurante}"; // Consulta para buscar as imagens
 $result = mysqli_query($conexao, $query);
@@ -106,6 +131,7 @@ if (mysqli_num_rows($result) > 0) {
         $imageUrl = $row['imagem_p']; // Caminho da imagem
         $nomeRestaurante = $row['nome']; // Nome do restaurante
        $descricao = $row['descricao']; // desecricao do restaurante
+       $loc_web = $row['web_loc']; // embebed do google maps
         // HTML para cada restaurante
         echo '<div class="co">';
         echo "<a href=''><img src='IMG_restaurante/$imageUrl' alt='Restaurante $nomeRestaurante'></a>";
@@ -114,17 +140,20 @@ if (mysqli_num_rows($result) > 0) {
     }
 
     echo '</div>';
-    
+   
+   
 } else {
     echo "<p>Nenhuma imagem encontrada.</p>";
 }
-
+echo '<div class="map">';
+echo "$loc_web ";
+echo '</div>';
 mysqli_close($conexao); // Fecha a conexão com o banco de dados
 ?>
 
 
   </article>
-   
+ 
  </main>
  <footer>
 <p>Site criado por <strong>Tchibiye</strong></p>

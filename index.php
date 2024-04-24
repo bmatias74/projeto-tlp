@@ -52,7 +52,7 @@ session_start();
         
             <a href="#"><img  class="logo" src="logo.png" alt=""></a>
         
-          <h1> Site</h1>
+          <h1> KINO</h1>
             <div class="search-box">
                   <input class="search-text" type="text" id="searchInput" placeholder="Pesquise aqui">
                 <a id="erasebtn" href="#"><img src="IMG/bxs-eraser.svg" alt=""></a>
@@ -91,7 +91,7 @@ session_start();
             </nav>
       </div>
  <main>
-  <h1>arroz</h1>
+  <h1>Sitios do seu agrado, para encher a barriga</h1>
   <article>
   
   <?php

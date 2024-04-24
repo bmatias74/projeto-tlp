@@ -1,0 +1,9 @@
+.map{
+    position: relative;
+}
+
+
+.map iframe{
+    
+   margin-left: 25%;
+}
