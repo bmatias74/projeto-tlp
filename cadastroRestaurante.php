@@ -16,7 +16,7 @@ function processImageUpload($conexao, $imageField, $nome) {
         if (!in_array($imageExtension, $validImageExtension)) {
             echo "<script>alert('Extensão de imagem inválida.'); window.location.href = '../projeto-tlp/Inserir restaurante.php';</script>";
             return false;
-        } elseif ($imageSize > 1200000) {
+        } elseif ($imageSize > 40000000) {
             echo "<script>alert('O tamanho da imagem é muito grande.'); window.location.href = '../projeto-tlp/Inserir restaurante.php';</script>";
             return false;
         } else {
