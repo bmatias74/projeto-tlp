@@ -106,7 +106,7 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $imageUrl = $row['imagem_p']; // Caminho da imagem
         $nomeRestaurante = $row['nome']; // Nome do restaurante
-        $restauranteId = $row['id']; // Id do restaurante
+        $restauranteId = $row['id_restaurante']; // Id do restaurante
         // HTML para cada restaurante
         echo '<div class="co">';
         echo "<a href='restaurante.php?id=$restauranteId'><img src='IMG_restaurante/$imageUrl' alt='Restaurante $nomeRestaurante'></a>";
