@@ -1,5 +1,5 @@
 <?php
-include "../db/conexao.php";
+include "./db/conexao.php";
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -34,7 +34,7 @@ function processImageUpload($conexao, $imageField, $nome) {
 }
 
 $id = $_POST["id"];
-$name = $_POST["name"];
+$name = $_POST["nome"];
 $email = $_POST["email"];
 $telefone = $_POST["telefone"];
 $password = password_hash($_POST["senha"], PASSWORD_DEFAULT);
@@ -43,12 +43,12 @@ $imageFields = ['image' => 'imagem_p'];
 foreach ($imageFields as $formField => $dbField) {
     $imageName = processImageUpload($conexao, $formField, $name);
     if ($imageName) {
-        $stmt = $conexao->prepare("UPDATE adm SET $dbField = ?, email = ?, telefone = ?, senha = ? WHERE id = ?");
+        $stmt = $conexao->prepare("UPDATE adm SET $dbField = ?, email = ?, nome = ?, telefone = ?, senha = ? WHERE id = ?");
         if ($stmt) {
-            $stmt->bind_param("ssssi", $imageName, $email, $telefone, $password, $id);
+            $stmt->bind_param("ssssi", $imageName, $email, $name, $telefone, $password, $id);
             if ($stmt->execute()) {
                 if (!headers_sent()) {
-                    header("Location: ../adm.php");
+                    header("Location: ../index.php");
                     exit();
                 }
             } else {

@@ -37,7 +37,7 @@ $twitter = mysqli_real_escape_string($conexao, $_POST["twitter"]);
 $instagram = mysqli_real_escape_string($conexao, $_POST["instagram"]);
 $id = $_POST["id"]; 
 
-$stmt = $conexao->prepare("UPDATE restaurante SET nome = ?, telefone = ?, telefone2 = ?, email = ?, descricao = ?, web_loc= ?, morada = ?, facebook = ?, twitter = ?, instagram = ? WHERE id = ?");
+$stmt = $conexao->prepare("UPDATE restaurante SET nome = ?, telefone = ?, telefone2 = ?, email = ?, descricao = ?, web_loc= ?, morada = ?, facebook = ?, twitter = ?, instagram = ? WHERE id_restaurante = ?");
 $stmt->bind_param("ssssssssssi", $nome, $telefone, $telefone2, $email, $descricao, $localizacao, $morada, $facebook, $twitter, $instagram, $id);
 $stmt->execute();
 
@@ -46,7 +46,7 @@ $imageFields = ['image' => 'imagem_p', 'image2' => 'imagem_s1', 'image3' => 'ima
 foreach ($imageFields as $formField => $dbField) {
     $imageName = processImageUpload($conexao, $formField, $nome);
     if ($imageName) {
-        $updateQuery = $conexao->prepare("UPDATE restaurante SET $dbField = ? WHERE id = ?");
+        $updateQuery = $conexao->prepare("UPDATE restaurante SET $dbField = ? WHERE id_restaurante = ?");
         $updateQuery->bind_param("si", $imageName, $id);
         $updateQuery->execute();
     }

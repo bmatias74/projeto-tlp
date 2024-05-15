@@ -1,7 +1,7 @@
 <?php
 
 $idtchibiye =  mysqli_real_escape_string($conexao, $_GET["idrestaurante"]);
-$sql= "SELECT * FROM restaurante WHERE id= {$idtchibiye}"; 
+$sql= "SELECT * FROM restaurante WHERE id_restaurante= {$idtchibiye}"; 
 $resultado = mysqli_query($conexao,$sql) or die("Erro ao recuperar os dados.". mysqli_error($conexao));
 $linha = mysqli_fetch_assoc($resultado);
 
@@ -40,7 +40,7 @@ $linha = mysqli_fetch_assoc($resultado);
                 <!-- Id do restaurante--> 
             <div class="input-box">
                 <label for="IDRestaurante">ID</label><!--1-->
-                <input  type="text" name="id" readonly value="<?=$linha["id"] ?>" >
+                <input  type="text" name="id" readonly value="<?=$linha["id_restaurante"] ?>" >
             </div>
                <!-- Nome--> 
              <div>

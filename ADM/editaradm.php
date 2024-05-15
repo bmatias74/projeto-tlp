@@ -29,15 +29,13 @@ $linha = $result->fetch_assoc();
     <!-- foto principal-->   
          <div class="upload" >
             <?php
-            $id = $linha["id"];
-            $name = $linha["nome"];
+         
             $image = $linha["imagem_p"];
             ?>
             <div class="perfil">
               <img src="IMG_adm/<?php echo $image; ?>" width = 125 height = 125 title="<?php echo $image; ?> "  id="imagePreview" >
               <div class="round">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="hidden" name="name" value="<?php echo $name; ?>">
+              
                 <input type="file" name="image"  id = "imageInput" accept=".jpg, .jpeg, .png">
                 <i class = "fa fa-camera" style = "color: #fff;"></i>
               </div>

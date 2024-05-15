@@ -14,7 +14,7 @@
 
 <div>
     <form action="adm.php?menuop=consulta" method="post">
-        <input type="text" name="txt_consulta" placeholder="Insira Nome/ID_consulta" >
+        <input type="text" name="txt_consulta" placeholder="Insira Nome/ID_restaurante" >
         <input type="submit" value="pesquisar">
         <?php
          $txt_pesquisa = isset($_POST["txt_consulta"]) ? $_POST["txt_consulta"] : "";
@@ -25,7 +25,7 @@
     </form>
     <?php
     if (!empty($txt_pesquisa)) {
-        $sqlt = "SELECT id FROM restaurante WHERE (id = '{$txt_pesquisa}' OR Nome LIKE '%{$txt_pesquisa}%')";
+        $sqlt = "SELECT id FROM restaurante WHERE (id_restaurante = '{$txt_pesquisa}' OR Nome LIKE '%{$txt_pesquisa}%')";
         $qrt = mysqli_query($conexao, $sqlt) or die("Erro ao mudar de pagina" . mysqli_error($conexao));
         $numt = mysqli_num_rows($qrt);
         echo "Total de registos: $numt <br> ";
@@ -36,7 +36,7 @@
     <table>
         <thead>
             <tr>
-                <th><a class="ordem" href="?menuop=consulta&organiza=id">ID do restaurante</a></th>
+                <th><a class="ordem" href="?menuop=consulta&organiza=id_restaurante">ID do restaurante</a></th>
                 <th><a class="ordem" href="?menuop=consulta&organiza=nome">Nome</a></th>
                 <th>Descrição</th>
                 <th>Telefone</th>
@@ -68,11 +68,11 @@
     $ordenarPor = isset($_GET['organiza']) ? $_GET['organiza'] : 'id';
     
     // Lista de colunas permitidas para ordenação
-    $colunasPermitidas = ['id', 'nome'];
+    $colunasPermitidas = ['id_restaurante', 'nome'];
     
     // Verifica se o valor de ordenarPor está na lista de colunas permitidas
     if (!in_array($ordenarPor, $colunasPermitidas)) {
-        $ordenarPor = 'id'; // Valor padrão caso não seja uma coluna permitida
+        $ordenarPor = 'id_restaurante'; // Valor padrão caso não seja uma coluna permitida
     }
     
     $qtd = isset($_SESSION['muntchiya']) ? $_SESSION['muntchiya'] : 10;
@@ -81,7 +81,7 @@
     
     
     $sql = "SELECT * FROM restaurante
-            WHERE (id= '{$txt_pesquisa}' OR nome LIKE '%{$txt_pesquisa}%')
+            WHERE (id_restaurante= '{$txt_pesquisa}' OR nome LIKE '%{$txt_pesquisa}%')
             ORDER BY $ordenarPor ASC
             LIMIT $inicio, $qtd";
     
@@ -96,7 +96,7 @@
     
     
         echo "<tr>";
-        echo "<td>{$linha["id"]}</td>";
+        echo "<td>{$linha["id_restaurante"]}</td>";
         echo "<td>{$linha["nome"]}</td>";
         echo "<td>{$linha["descricao"]}</td>";
         echo "<td>{$linha["telefone"]}</td>";
@@ -107,8 +107,8 @@
         echo "<td>{$linha["instagram"]}</td>";
         echo "<td>{$linha["twitter"]}</td>";
         echo "<td>{$linha["facebook"]}</td>";
-        echo "<td><a href=\"adm.php?menuop=editarr&idrestaurante={$linha["id"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/edit.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
-        echo "<td><a href=\"adm.php?menuop=tenscerteza&idrestaurante={$linha["id"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/delete.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
+        echo "<td><a href=\"adm.php?menuop=editarr&idrestaurante={$linha["id_restaurante"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/edit.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
+        echo "<td><a href=\"adm.php?menuop=tenscerteza&idrestaurante={$linha["id_restaurante"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/delete.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
     
         echo "</tr>";
     
@@ -121,7 +121,7 @@
 </div>
 <?php
 
-$sqlt = "SELECT id FROM restaurante";
+$sqlt = "SELECT id_restaurante FROM restaurante";
 $qrt = mysqli_query($conexao,$sqlt) or die ("Erro ao mudar de pagina". mysqli_error($conexao));
 $numt = mysqli_num_rows($qrt);
 $totalpg = ceil($numt/$qtd);

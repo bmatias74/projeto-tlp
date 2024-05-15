@@ -50,7 +50,7 @@ session_start();
    <?php 
   
 $idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
-$query = "SELECT * FROM restaurante where id = {$idrestaurante}"; // Consulta para buscar as imagens
+$query = "SELECT * FROM restaurante where id_restaurante = {$idrestaurante}"; // Consulta para buscar as imagens
 $result = mysqli_query($conexao, $query);
 
 if (mysqli_num_rows($result) > 0) {
@@ -121,7 +121,7 @@ if (mysqli_num_rows($result) > 0) {
   <?php
 
 $idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
-$query = "SELECT * FROM restaurante where id = {$idrestaurante}"; // Consulta para buscar as imagens
+$query = "SELECT * FROM restaurante where id_restaurante = {$idrestaurante}"; // Consulta para buscar as imagens
 $result = mysqli_query($conexao, $query);
 
 if (mysqli_num_rows($result) > 0) {
