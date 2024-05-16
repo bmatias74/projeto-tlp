@@ -78,15 +78,15 @@ margin: 0;
     display: block; 
     background-color: var(--cbutton);
     text-decoration: none;
-    margin-right: 15px;
+
     color: black;
     padding: 5px 10px;
     border: 1px solid black;
     box-shadow: 2px 2px 15px #3B2B0F;
-    border-radius: 5px;
+    border-radius: 8px;
     text-align: center;
     cursor: pointer; 
-    margin-left: 10px ;
+  
     transition: background-color 0.3s ease; 
 }
 
@@ -193,7 +193,7 @@ main{
     height: auto;
     box-sizing: border-box; 
     border-radius: 5px;
-    
+    height: 100vh;
 }
 
 .imagens {

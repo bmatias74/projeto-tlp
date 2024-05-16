@@ -59,7 +59,10 @@ th, td {
     border: 1px solid #ccc;
 
 }
-
+.map iframe{
+    width:  100px;
+    height: 100px;
+}
 thead, .tcabeca {
     background-color: var(--cpadrao);
     color: #fff;

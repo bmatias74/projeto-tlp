@@ -90,16 +90,16 @@ $stmti->close();
       <li>
         <a href="adm.php?menuop=home"> <!--variavel ou paramentro para fazer atroca -->
         <i class='bx bx-home-alt-2' style='color:#ece8e8'  ></i>
-          <span class="nav-item">Home</span>
+          <span class="nav-item">Usuários</span>
         </a>
-        <span class="tooltip">Home</span> <!-- vai server quando o menu tiver pic -->
+        <span class="tooltip">Usuários</span> <!-- vai server quando o menu tiver pic -->
       </li>
       <li>
         <a href="adm.php?menuop=consulta">
           <i class="bx bxs-grid-alt"></i>
-          <span class="nav-item">Consultas</span>
+          <span class="nav-item">Restaurantes</span>
         </a>
-        <span class="tooltip">Consultas</span> <!-- vai server quando o menu tiver pic -->
+        <span class="tooltip">Restaurante</span> <!-- vai server quando o menu tiver pic -->
       </li>
       <li>
         <a href="adm.php?menuop=config">
@@ -120,7 +120,7 @@ $stmti->close();
   <div class="main-content">
     <div class="container">
       <?php
-      $menuop = (isset($_GET["menuop"])) ? $_GET["menuop"] : "home";
+      $menuop = (isset($_GET["menuop"])) ? $_GET["menuop"] : "consulta";
       switch ($menuop) {
         case 'home':
           include("home/home.php");

@@ -1,12 +1,88 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>1</h1>
-    <img src="IMG_adm/adm - 2024.04.12 - 03.11.09am.png" alt="">
+    <title>KINO</title>
+    
+    <link rel="stylesheet" href="CSS/teste.css">
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
+
+</head >
+<body >
+
+
+
+ <main>
+ 
+  <!-- SLIDER INICIO-->
+  <div class="slider">
+      <div class="slides">
+          <!-- RADIO INICIO-->
+        <input type="radio" id="radio1" name="radio-btn">
+        <input type="radio" id="radio2" name="radio-btn">
+        <input type="radio" id="radio3" name="radio-btn">
+        <input type="radio" id="radio4" name="radio-btn">
+        <!-- RADIO FIM-->
+         <!-- IMAGENS INICIO-->
+         <div id="imagem1" >
+               <img  src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image.jpeg" alt="">
+         </div>
+         <div id="imagem2">
+               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image2.jpg" alt="">
+         </div>
+         <div id="imagem3">
+               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image3.jpg" alt="">
+         </div>
+         <div id="imagem4">
+               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image4.jpg" alt="">
+         </div>
+         <!-- NAVEGAÇÂO AUTOMÁTICA INICIO -->
+         <div class="navega-auto">
+              <div class="auto-btn1"></div>
+              <div class="auto-btn2"></div>
+              <div class="auto-btn3"></div>
+              <div class="auto-btn4"></div>
+         </div>
+         <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
+        
+      </div>
+          <!-- NAVEGAÇÃO MANUAL INICIO -->
+          <div class="navega-mano">
+              <LABEL for="radio1" class="manual-btn"></LABEL>
+              <LABEL for="radio2" class="manual-btn"></LABEL>
+              <LABEL for="radio3" class="manual-btn"></LABEL>
+              <LABEL for="radio4" class="manual-btn"></LABEL>
+          </div>
+         <!--  NAVEGAÇÃO MANUAL FIM -->
+  </div>
+   <!-- SLIDER FIM-->
+
+ 
+ </main>
+ 
+<script>
+var contador = 1;
+
+slide1 = document.getElementById('imagem1');
+const radio1 = document.getElementById('radio1');
+if(radio1.checked = true) {
+    let slide = document.getElementById('imagem1');
+        slide.style.marginLeft = '-30%';
+};
+        
+   
+
+/*setInterval(function() {
+    document.getElementById('radio' + contador).checked = true;
+    contador++;
+    if(contador > 4){
+        contador =1
+    }
+}, 1000)
+
+*/
+</script>
 </body>
 </html>

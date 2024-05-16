@@ -39,8 +39,8 @@
     <table>
         <thead>
             <tr>
-                <th><a class="ordem" href="?menuop=consulta&organiza=id">ID_usuario</a></th>
-                <th><a class="ordem" href="?menuop=consulta&organiza=nome">Nome</a></th>
+                <th><a class="ordem" href="?menuop=home&organiza=id">ID_usuario</a></th>
+                <th><a class="ordem" href="?menuop=home&organiza=nome">Nome</a></th>
                 <th>Telefone</th>
                 <th>Email</th>
                 <th>Data de nascimento</th>

@@ -58,7 +58,7 @@
             msg();
         ?>
         <button name="cadastrar" id="btn-entrada" disabled>Cadastrar</button>
-        <p>Já tem conta? <a href="login.html">Iniciar Sessão</a></p>
+        <p>Já tem conta? <a href="login.php">Iniciar Sessão</a></p>
       </form>
     </div>
   </main>

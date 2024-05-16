@@ -1,0 +1,59 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #7fffd4;
+}
+main{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    color: aquamarine;
+    align-items: center;
+    justify-content: center;
+}
+.slider{
+    width: 300px;
+    height: 113px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.slides{
+    width: 500%;
+    height: 113px;
+    display: flex;
+}
+.slides input{
+   display: ;
+
+}
+.imagemr{
+    width: 20%;
+    transition: 2s;
+}
+.imagemr img{
+    width: 300px;
+    height: 113px;
+    background-size: contain;
+}
+/* CSS PARA NAvegação manual */
+.navega-mano{
+    position: absolute;
+    width: 300px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+.manual-btn{
+    border: 2px solid #449077 ;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.manual-btn:not(:last-child){
+    margin-right: 5%;
+}
+.manual-btn:hover{
+    background: #449077;
+}

@@ -116,8 +116,50 @@ if (mysqli_num_rows($result) > 0) {
       </div>
  <main>
   <h1>arroz</h1>
+  <!-- SLIDER INICIO-->
+  <div class="slider">
+      <div class="slides">
+          <!-- RADIO INICIO-->
+        <input type="radio" id="slide-btn-radio" name="radio1">
+        <input type="radio" id="slide-btn-radio" name="radio2">
+        <input type="radio" id="slide-btn-radio" name="radio3">
+        <input type="radio" id="slide-btn-radio" name="radio4">
+        <!-- RADIO FIM-->
+         <!-- IMAGENS INICIO-->
+         <div class="imagemr">
+               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image.jpeg" alt="">
+         </div>
+         <div class="imagemr">
+               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image2.jpg" alt="">
+         </div>
+         <div class="imagemr">
+               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image3.jpg" alt="">
+         </div>
+         <div class="imagemr">
+               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image4.jpg" alt="">
+         </div>
+         <!-- NAVEGAÇÂO AUTOMÁTICA INICIO -->
+         <div class="navega-auto">
+              <div class="auto-btn1"></div>
+              <div class="auto-btn2"></div>
+              <div class="auto-btn3"></div>
+              <div class="auto-btn4"></div>
+         </div>
+         <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
+        
+      </div>
+          <!-- NAVEGAÇÃO MANUAL INICIO -->
+          <div class="navega-mano">
+              <LABEL for="radio1" class="manual-btn"></LABEL>
+              <LABEL for="radio2" class="manual-btn"></LABEL>
+              <LABEL for="radio3" class="manual-btn"></LABEL>
+              <LABEL for="radio4" class="manual-btn"></LABEL>
+          </div>
+         <!--  NAVEGAÇÃO MANUAL FIM -->
+  </div>
+   <!-- SLIDER FIM-->
   <article>
-  
+  <!-- PHP INICIO-->
   <?php
 
 $idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
@@ -151,7 +193,7 @@ echo '</div>';
 mysqli_close($conexao); // Fecha a conexão com o banco de dados
 ?>
 
-
+<!-- PHP FIM-->
   </article>
  
  </main>

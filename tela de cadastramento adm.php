@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
  
       <header>
-          <a href="index.htm"><img  class="logo" src="logo.png" alt=""></a>
+          <a href="index.php"><img  class="logo" src="logo.png" alt=""></a>
         <h1> Cadastro do Adm</h1>
       </header>
 

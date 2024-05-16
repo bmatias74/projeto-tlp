@@ -3,7 +3,7 @@
 <meta http-equiv="refresh" content="200">
 <link rel="stylesheet" href=".\CSS\painel-consulta.css">
 <header>
-    <h3>Consultas confirmadas</h3>
+    <h3>RESTAURANTES</h3>
     <hr>
 </header>
 <script>
@@ -102,7 +102,7 @@
         echo "<td>{$linha["telefone"]}</td>";
         echo "<td>{$linha["telefone2"]}</td>";
         echo "<td>{$linha["email"]}</td>";
-        echo "<td>{$linha["web_loc"]}</td>";
+        echo "<td class='map' >{$linha["web_loc"]}</td>";
         echo "<td>{$linha["morada"]}</td>";
         echo "<td>{$linha["instagram"]}</td>";
         echo "<td>{$linha["twitter"]}</td>";
