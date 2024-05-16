@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
@@ -9,13 +8,9 @@
     <link rel="stylesheet" href="CSS/teste.css">
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 
-</head >
-<body >
-
-
-
+</head>
+<body>
  <main>
- 
   <!-- SLIDER INICIO-->
   <div class="slider">
       <div class="slides">
@@ -26,16 +21,16 @@
         <input type="radio" id="radio4" name="radio-btn">
         <!-- RADIO FIM-->
          <!-- IMAGENS INICIO-->
-         <div id="imagem1" >
-               <img  src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image.jpeg" alt="">
+         <div class="slide" id="imagem1">
+               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image.jpeg" alt="">
          </div>
-         <div id="imagem2">
+         <div class="slide" id="imagem2">
                <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image2.jpg" alt="">
          </div>
-         <div id="imagem3">
+         <div class="slide" id="imagem3">
                <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image3.jpg" alt="">
          </div>
-         <div id="imagem4">
+         <div class="slide" id="imagem4">
                <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image4.jpg" alt="">
          </div>
          <!-- NAVEGAÇÂO AUTOMÁTICA INICIO -->
@@ -46,43 +41,43 @@
               <div class="auto-btn4"></div>
          </div>
          <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
-        
       </div>
           <!-- NAVEGAÇÃO MANUAL INICIO -->
           <div class="navega-mano">
-              <LABEL for="radio1" class="manual-btn"></LABEL>
-              <LABEL for="radio2" class="manual-btn"></LABEL>
-              <LABEL for="radio3" class="manual-btn"></LABEL>
-              <LABEL for="radio4" class="manual-btn"></LABEL>
+              <label for="radio1" class="manual-btn"></label>
+              <label for="radio2" class="manual-btn"></label>
+              <label for="radio3" class="manual-btn"></label>
+              <label for="radio4" class="manual-btn"></label>
           </div>
          <!--  NAVEGAÇÃO MANUAL FIM -->
   </div>
    <!-- SLIDER FIM-->
-
- 
  </main>
  
 <script>
-var contador = 1;
+const slidesContainer = document.querySelector('.slides');
+const radioButtons = document.querySelectorAll('#radio1, #radio2, #radio3, #radio4');
 
-slide1 = document.getElementById('imagem1');
-const radio1 = document.getElementById('radio1');
-if(radio1.checked = true) {
-    let slide = document.getElementById('imagem1');
-        slide.style.marginLeft = '-30%';
-};
-        
-   
-
-/*setInterval(function() {
-    document.getElementById('radio' + contador).checked = true;
-    contador++;
-    if(contador > 4){
-        contador =1
-    }
-}, 1000)
-
-*/
+radioButtons.forEach((radio, index) => {
+    radio.addEventListener('change', () => {
+        if (radio.checked) {
+            switch (index) {
+                case 0:
+                    slidesContainer.style.marginLeft = `0%`;
+                    break;
+                case 1:
+                    slidesContainer.style.marginLeft = `-200%`;
+                    break;
+                case 2:
+                    slidesContainer.style.marginLeft = `-400%`;
+                    break;
+                case 3:
+                    slidesContainer.style.marginLeft = `-600%`;
+                    break;
+            }
+        }
+    });
+});
 </script>
 </body>
 </html>
