@@ -227,7 +227,7 @@ main{
     width: 100%;
   height: auto;
   width: 100%;
-    height: auto;
+ 
     aspect-ratio: 16 / 9; /* Mantém a proporção das imagens */
     object-fit: contain;
 

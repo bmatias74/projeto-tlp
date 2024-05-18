@@ -40,51 +40,45 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KINO</title>
+    
     <link rel="stylesheet" href="CSS/Style.CSS">
     <link rel="stylesheet" href="CSS/configstyle.css">
     <link rel="stylesheet" href="CSS/restaurante.css">
+    
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 
-</head >
-<body >
-   <?php 
+</head>
+<body>
+<?php 
   
-$idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
-$query = "SELECT * FROM restaurante where id_restaurante = {$idrestaurante}"; // Consulta para buscar as imagens
-$result = mysqli_query($conexao, $query);
-
-if (mysqli_num_rows($result) > 0) {
- 
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        $imageUrl = $row['imagem_p']; // Caminho da imagem
-        $nomeRestaurante = $row['nome']; // Nome do restaurante
-       $descricao = $row['descricao']; // desecricao do restaurante
-    
-
-    }
-    
-} else {
- 
-}
+  $idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
+  $query = "SELECT * FROM restaurante where id_restaurante = {$idrestaurante}"; // Consulta para buscar as imagens
+  $result = mysqli_query($conexao, $query);
+  
+  if (mysqli_num_rows($result) > 0) {
    
+  
+      while ($row = mysqli_fetch_assoc($result)) {
+          $imageUrl = $row['imagem_p']; // Caminho da imagem
+          $nomeRestaurante = $row['nome']; // Nome do restaurante
+         $descricao = $row['descricao']; // desecricao do restaurante
+      
+  
+      }
+      
+  } else {
    
-   ?>
-
-      <div class="header">
+  }
+     
+     
+     ?>
+     <div class="header">
         <header>
         
-            <a href="#"><img  class="logo" src="logo.png" alt=""></a>
+            <a href="index.php"><img  class="logo" src="logo.png" alt=""></a>
         
           <h1>  <?= $nomeRestaurante  ?></h1>
-            <div class="search-box">
-                  <input class="search-text" type="text" id="searchInput" placeholder="Pesquise aqui">
-                <a id="erasebtn" href="#"><img src="IMG/bxs-eraser.svg" alt=""></a>
-              <a class="search-btn" id="searchbtn" href="#">
-                
-                      <img src="IMG/loupe-svgrepo-com.svg" alt="lupa" height="19" width="19">
-              </a>
-          </div>
+           
          
    
           <div class="placa_boa">
@@ -115,28 +109,62 @@ if (mysqli_num_rows($result) > 0) {
             </nav>
       </div>
  <main>
-  <h1>arroz</h1>
+   <!-- PHP INICIO-->
+   <?php
+
+$idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
+$query = "SELECT * FROM restaurante where id_restaurante = {$idrestaurante}"; // Consulta para buscar as imagens
+$result = mysqli_query($conexao, $query);
+
+if (mysqli_num_rows($result) > 0) {
+ 
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $imageUrl = $row['imagem_p']; // Caminho da imagem
+        $nomeRestaurante = $row['nome']; // Nome do restaurante
+       $descricao = $row['descricao']; // desecricao do restaurante
+       $imagem1 = $row['imagem_s1']; // imagem 1 do restaurante
+       $imagem2 = $row['imagem_s2']; // imagem 2 do restaurante
+       $imagem3 = $row['imagem_s3']; // imagem 3 do restaurante
+       $imagem4 = $row['imagem_s4']; // imagem 4 do restaurante
+       $loc_web = $row['web_loc']; // embebed do google maps
+      
+    }
+
+   
+   
+   
+} else {
+    echo "<p>Nenhuma imagem encontrada.</p>";
+}
+
+mysqli_close($conexao); // Fecha a conexão com o banco de dados
+?>
+<img class="imagem_p" src="IMG_restaurante/<?= $imageUrl ?>" alt="">
+
+<!-- PHP FIM-->
+ 
   <!-- SLIDER INICIO-->
   <div class="slider">
       <div class="slides">
           <!-- RADIO INICIO-->
-        <input type="radio" id="slide-btn-radio" name="radio1">
-        <input type="radio" id="slide-btn-radio" name="radio2">
-        <input type="radio" id="slide-btn-radio" name="radio3">
-        <input type="radio" id="slide-btn-radio" name="radio4">
+        <input type="radio" id="radio1" name="radio-btn">
+        <input type="radio" id="radio2" name="radio-btn">
+        <input type="radio" id="radio3" name="radio-btn">
+        <input type="radio" id="radio4" name="radio-btn">
         <!-- RADIO FIM-->
          <!-- IMAGENS INICIO-->
-         <div class="imagemr">
-               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image.jpeg" alt="">
+         <div class="slide" id="imagem1">
+               <img src="IMG_restaurante/<?= $imagem1 ?>" alt="">
          </div>
-         <div class="imagemr">
-               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image2.jpg" alt="">
+         <div class="slide" id="imagem2">
+               <img src="IMG_restaurante/<?= $imagem2 ?>" alt="">
          </div>
-         <div class="imagemr">
-               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image3.jpg" alt="">
+         <div class="slide" id="imagem3">
+               <img src="IMG_restaurante/<?= $imagem3 ?>" alt="">
          </div>
-         <div class="imagemr">
-               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image4.jpg" alt="">
+         <div class="slide" id="imagem4">
+               <img src="IMG_restaurante/<?= $imagem4 ?>" alt="">
          </div>
          <!-- NAVEGAÇÂO AUTOMÁTICA INICIO -->
          <div class="navega-auto">
@@ -146,60 +174,20 @@ if (mysqli_num_rows($result) > 0) {
               <div class="auto-btn4"></div>
          </div>
          <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
-        
       </div>
           <!-- NAVEGAÇÃO MANUAL INICIO -->
           <div class="navega-mano">
-              <LABEL for="radio1" class="manual-btn"></LABEL>
-              <LABEL for="radio2" class="manual-btn"></LABEL>
-              <LABEL for="radio3" class="manual-btn"></LABEL>
-              <LABEL for="radio4" class="manual-btn"></LABEL>
+              <label for="radio1" class="manual-btn"></label>
+              <label for="radio2" class="manual-btn"></label>
+              <label for="radio3" class="manual-btn"></label>
+              <label for="radio4" class="manual-btn"></label>
           </div>
          <!--  NAVEGAÇÃO MANUAL FIM -->
   </div>
    <!-- SLIDER FIM-->
-  <article>
-  <!-- PHP INICIO-->
-  <?php
-
-$idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
-$query = "SELECT * FROM restaurante where id_restaurante = {$idrestaurante}"; // Consulta para buscar as imagens
-$result = mysqli_query($conexao, $query);
-
-if (mysqli_num_rows($result) > 0) {
-    echo '<div class="imagens">';
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        $imageUrl = $row['imagem_p']; // Caminho da imagem
-        $nomeRestaurante = $row['nome']; // Nome do restaurante
-       $descricao = $row['descricao']; // desecricao do restaurante
-       $loc_web = $row['web_loc']; // embebed do google maps
-        // HTML para cada restaurante
-        echo '<div class="co">';
-        echo "<a href=''><img src='IMG_restaurante/$imageUrl' alt='Restaurante $nomeRestaurante'></a>";
-        echo "<figcaption for='text'> $nomeRestaurante</figcaption>";
-        echo '</div>';
-    }
-
-    echo '</div>';
-   
-   
-} else {
-    echo "<p>Nenhuma imagem encontrada.</p>";
-}
-echo '<div class="map">';
-echo "$loc_web ";
-echo '</div>';
-mysqli_close($conexao); // Fecha a conexão com o banco de dados
-?>
-
-<!-- PHP FIM-->
-  </article>
- 
  </main>
- <footer>
-<p>Site criado por <strong>Tchibiye</strong></p>
- </footer>
-
+ 
+ <script src="slide.js">
+</script>
 </body>
 </html>

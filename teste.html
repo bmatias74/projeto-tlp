@@ -44,10 +44,10 @@
       </div>
           <!-- NAVEGAÇÃO MANUAL INICIO -->
           <div class="navega-mano">
-              <label for="radio1" class="manual-btn"></label>
-              <label for="radio2" class="manual-btn"></label>
-              <label for="radio3" class="manual-btn"></label>
-              <label for="radio4" class="manual-btn"></label>
+              <label for="radio1" class="manual-btn" id="radion1"></label>
+              <label for="radio2" class="manual-btn"  id="radion2"></label>
+              <label for="radio3" class="manual-btn"  id="radion3"></label>
+              <label for="radio4" class="manual-btn"  id="radion4"></label>
           </div>
          <!--  NAVEGAÇÃO MANUAL FIM -->
   </div>
@@ -57,24 +57,19 @@
 <script>
 const slidesContainer = document.querySelector('.slides');
 const radioButtons = document.querySelectorAll('#radio1, #radio2, #radio3, #radio4');
+const navegador = document.querySelectorAll('#radion1, #radion2, #radion3, #radion4');
 
 radioButtons.forEach((radio, index) => {
     radio.addEventListener('change', () => {
         if (radio.checked) {
-            switch (index) {
-                case 0:
-                    slidesContainer.style.marginLeft = `0%`;
-                    break;
-                case 1:
-                    slidesContainer.style.marginLeft = `-200%`;
-                    break;
-                case 2:
-                    slidesContainer.style.marginLeft = `-400%`;
-                    break;
-                case 3:
-                    slidesContainer.style.marginLeft = `-600%`;
-                    break;
-            }
+            navegador.forEach((radion, ind) => {
+                 radion.style.backgroundColor = '';
+                 if (ind === index) {
+                     radion.style.backgroundColor = 'yellow';
+                 }
+             });
+             const marginLeft = -200 * index;
+            slidesContainer.style.marginLeft = `${marginLeft}%`;
         }
     });
 });

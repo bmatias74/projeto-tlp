@@ -57,7 +57,7 @@ main{
         }
 
         .manual-btn {
-            border: 2px solid #fff;
+            border: 2px solid #000000;
             padding: 5px;
             border-radius: 10px;
             cursor: pointer;
@@ -71,4 +71,4 @@ main{
         .manual-btn:hover {
             background: #fff;
         }
-
+        
