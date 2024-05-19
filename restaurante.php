@@ -75,31 +75,34 @@ session_start();
      <div class="header">
         <header>
         
-            <a href="index.php"><img  class="logo" src="logo.png" alt=""></a>
-        
-          <h1>  <?= $nomeRestaurante  ?></h1>
-           
-         
+            <div class="conjunto-logo">
+              <a href="index.php"><img  class="logo" src="logo.png" alt=""></a>
+                      
+                        <h1>  <?= $nomeRestaurante  ?></h1>
+            </div>
    
-          <div class="placa_boa">
+      
+        
+      <div class="placa_boa">
          <?php if ($logado): ?>
         <p>Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?></p>
     <?php else: ?>
         <p>Olá, visitante!</p>
     <?php endif; ?>
       </div>
-      <?php if ($logado): ?>
-      <button id="settingsBtn" class="menu-btn"><img src="IMG/gear-svgrepo-com.svg" alt="engrenagem" height="19" width="19"></button>
-    <div id="settingsMenu" class="settings-menu hidden">
-        <ul>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="logout.php">Sair</a></li>
-        </ul>
-    </div>
-    <?php else: ?>
-    <p class="button"> <a href="cadastramento.php">Cadastre-se</a> </p>
-    <p class="button"><a href="login.php">Login</a></p>
-    <?php endif; ?>  
+        <?php if ($logado): ?>
+        <button id="settingsBtn" class="menu-btn"><img src="IMG/gear-svgrepo-com.svg" alt="engrenagem" height="19" width="19"></button>
+            <div id="settingsMenu" class="settings-menu hidden">
+          <ul>
+              <li><a href="#">Perfil</a></li>
+              <li><a href="logout.php">Sair</a></li>
+          </ul>
+            </div>
+            <?php else: ?>
+            <p class="button"> <a href="cadastramento.php">Cadastre-se</a> </p>
+            <p class="button"><a href="login.php">Login</a></p>
+            <?php endif; ?>
+    
         </header>
          <nav>
           <ul>
@@ -175,18 +178,18 @@ mysqli_close($conexao); // Fecha a conexão com o banco de dados
          </div>
          <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
       </div>
-          <!-- NAVEGAÇÃO MANUAL INICIO -->
-          <div class="navega-mano">
-              <label for="radio1" class="manual-btn"></label>
-              <label for="radio2" class="manual-btn"></label>
-              <label for="radio3" class="manual-btn"></label>
-              <label for="radio4" class="manual-btn"></label>
+    <!-- NAVEGAÇÃO MANUAL INICIO -->
+    <div class="navega-mano">
+              <label for="radio1" class="manual-btn" id="radion1"></label>
+              <label for="radio2" class="manual-btn"  id="radion2"></label>
+              <label for="radio3" class="manual-btn"  id="radion3"></label>
+              <label for="radio4" class="manual-btn"  id="radion4"></label>
           </div>
          <!--  NAVEGAÇÃO MANUAL FIM -->
   </div>
    <!-- SLIDER FIM-->
  </main>
- 
+
  <script src="slide.js">
 </script>
 </body>

@@ -1,4 +1,27 @@
 
+header{
+
+  background-color: var(--cheader);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  
+     
+  }
+  .conjunto-logo{
+    display: flex;
+    align-items: center;
+  }
+  .dps-logado{
+    display: flex;
+    align-items: center;
+  }
+  .header{
+      top: 0; 
+   z-index: 1000;
+  
+  position: sticky;
+  }
 .map{
    border: 5px solid black;
    overflow: hidden;
