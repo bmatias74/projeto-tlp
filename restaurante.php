@@ -143,7 +143,11 @@ if (mysqli_num_rows($result) > 0) {
 
 mysqli_close($conexao); // Fecha a conexão com o banco de dados
 ?>
-<img class="imagem_p" src="IMG_restaurante/<?= $imageUrl ?>" alt="">
+<!-- IMAGEM PRINCIPAL INICIO -->
+<div class="imagem_pd">
+  <img class="imagem_p" src="IMG_restaurante/<?= $imageUrl ?>" alt="">
+</div>
+<!-- IMAGEM PRINCIPAL FIM -->
 
 <!-- PHP FIM-->
  
