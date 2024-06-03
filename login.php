@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $result = mysqli_query($conexao, "SELECT * FROM usuario WHERE email='$email'");
+    $result = mysqli_query($conexao, "SELECT * FROM usuario WHERE email='$email' ");
 
 	if ($result) {
         if ($row = mysqli_fetch_assoc($result)) {
