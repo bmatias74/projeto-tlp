@@ -8,18 +8,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $result = mysqli_query($conexao, "SELECT * FROM adm WHERE email='$email'");
 
-	if ($result) {
+    if ($result) {
         if ($row = mysqli_fetch_assoc($result)) {
-            
+
             if (password_verify($password, $row["senha"])) {
 
                 session_start();
-                $_SESSION['email'] = $email; 
+                $_SESSION['email'] = $email;
 
                 header("Location: adm.php");
-                exit(); 
+                exit();
             } else {
-                
+
                 echo "<script>alert('Senha incorreta!');</script>";
             }
         } else {
@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="pt-pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,37 +45,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="CSS/Login.CSS">
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 </head>
-<body >
-   
- 
-      <header>
-          <a href="index.php"><img  class="logo" src="logo.png" alt=""></a>
+
+<body>
+
+
+    <header>
+        <a href="index.php"><img class="logo" src="logo.png" alt=""></a>
         <h1> Site</h1>
-      </header>
+    </header>
 
-<main>
+    <main>
 
 
-<div class="formulario">
-    <h1>Olá, que saudades</h1>
-    <hr>
-<form action="admlogin.php" method="post">
-<div class="inputg">
- <label for="email"> E-mail/Nome de usuário</label>
- <input type="text" name="email" id="email" placeholder="Introduza o E-mail ou o nome de usuário" required>
+        <div class="formulario">
+            <h1>Olá, que saudades</h1>
+            <hr>
+            <form action="admlogin.php" method="post">
+                <div class="inputg">
+                    <label for="email"> E-mail/Nome de usuário</label>
+                    <input type="text" name="email" id="email" placeholder="Introduza o E-mail ou o nome de usuário" required>
 
-    <label for="password"> Palavra-passe</label>
- <input type="password" name="password" id="password" placeholder="Insira a sua palavra-passe" required>
- </div>
- 
-<button type="submit" > Entrar</button>
- <p > Não possuis conta? <a href="tela de cadastramento adm.php">Cadastre-se</a>
-</form>
-</div>
-</main>
-<footer>
-<p>Site criado por <strong>Tchibiye</strong></p>
-</footer>
+                    <label for="password"> Palavra-passe</label>
+                    <input type="password" name="password" id="password" placeholder="Insira a sua palavra-passe" required>
+                </div>
+
+                <button type="submit"> Entrar</button>
+                <p> Não possuis conta? <a href="tela de cadastramento adm.php">Cadastre-se</a>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>Site criado por <strong>Tchibiye</strong></p>
+    </footer>
 
 </body>
+
 </html>

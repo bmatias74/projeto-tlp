@@ -1,32 +1,32 @@
 <?php
-    include("db/conexao.php");
-    include('auth.php');
+include("db/conexao.php");
+include('auth.php');
 
-    verificarSessao();
+verificarSessao();
 
-    $email = $_SESSION['email'];
+$email = $_SESSION['email'];
 
-    // Preparar a consulta
-    $stmt = $conexao->prepare("SELECT nome FROM adm WHERE email=?");
+// Preparar a consulta
+$stmt = $conexao->prepare("SELECT nome FROM adm WHERE email=?");
 
-    // Vincular o parâmetro de e-mail
-    $stmt->bind_param("s", $email);
+// Vincular o parâmetro de e-mail
+$stmt->bind_param("s", $email);
 
-    // Executar a consulta
-    $stmt->execute();
+// Executar a consulta
+$stmt->execute();
 
-    // Vincular a variável de resultado
-    $stmt->bind_result($nome);
+// Vincular a variável de resultado
+$stmt->bind_result($nome);
 
-    // Buscar o resultado
-    $stmt->fetch();
+// Buscar o resultado
+$stmt->fetch();
 
-    // Fechar a consulta
-    $stmt->close();
+// Fechar a consulta
+$stmt->close();
 
-    // Agora, $nome contém o nome do administrador com o e-mail fornecido
+// Agora, $nome contém o nome do administrador com o e-mail fornecido
 
-    $_SESSION['nome']=$nome;
+$_SESSION['nome'] = $nome;
 
 ?>
 
@@ -43,7 +43,7 @@
 </head>
 
 <body>
-  
+
   <div class="sidebar">
     <div class="top">
       <div class="logo">
@@ -53,29 +53,29 @@
       <i class="bx bx-menu" id="btn"></i>
     </div>
     <div class="perfil">
-    <?php
+      <?php
 
-$stmti = $conexao->prepare("SELECT nome, imagem_p FROM adm WHERE email = ?");
-$stmti->bind_param("s", $email);
-$stmti->execute();
-$resulti = $stmti->get_result();
+      $stmti = $conexao->prepare("SELECT nome, imagem_p FROM adm WHERE email = ?");
+      $stmti->bind_param("s", $email);
+      $stmti->execute();
+      $resulti = $stmti->get_result();
 
-if ($resulti->num_rows > 0) {
-    $row = $resulti->fetch_assoc();
-    $imageUrl = $row['imagem_p']; // Path to the image
-    $nomeAdm = $row['nome']; // Name of the administrator
+      if ($resulti->num_rows > 0) {
+        $row = $resulti->fetch_assoc();
+        $imageUrl = $row['imagem_p']; // Path to the image
+        $nomeAdm = $row['nome']; // Name of the administrator
 
-    // Generate HTML for the administrator's image
-    echo '<div class="user-img">';
-    echo "<img src='IMG_adm/$imageUrl' alt='Administrador $nomeAdm' />";
-    echo '</div>';
-} else {
-    // Display default image if no records found
-    echo "<img src='IMG/usuario_318-134392.jpg' alt='Imagem padrão' class='user-img' />";
-}
+        // Generate HTML for the administrator's image
+        echo '<div class="user-img">';
+        echo "<img src='IMG_adm/$imageUrl' alt='Administrador $nomeAdm' />";
+        echo '</div>';
+      } else {
+        // Display default image if no records found
+        echo "<img src='IMG/usuario_318-134392.jpg' alt='Imagem padrão' class='user-img' />";
+      }
 
-$stmti->close();
-?>
+      $stmti->close();
+      ?>
 
 
 
@@ -85,11 +85,11 @@ $stmti->close();
         <p><?php echo $_SESSION['nome'] ?></p>
       </div>
     </div>
-    
+
     <ul>
       <li>
         <a href="adm.php?menuop=home"> <!--variavel ou paramentro para fazer atroca -->
-        <i class='bx bx-home-alt-2' style='color:#ece8e8'  ></i>
+          <i class='bx bx-home-alt-2' style='color:#ece8e8'></i>
           <span class="nav-item">Usuários</span>
         </a>
         <span class="tooltip">Usuários</span> <!-- vai server quando o menu tiver pic -->
@@ -134,9 +134,9 @@ $stmti->close();
         case 'atualizar':
           include("consulta/atualizar.php");
           break;
-          case 'atualizarr':
-            include("consulta/atualizarr.php");
-            break;
+        case 'atualizarr':
+          include("consulta/atualizarr.php");
+          break;
         case 'excluirp':
           include("consulta/excluirp.php");
           break;
@@ -149,7 +149,7 @@ $stmti->close();
         case 'excluir':
           include("consulta/excluir.php");
           break;
-              
+
         case 'config':
           include("consulta/configadm.php");
           break;
@@ -159,14 +159,14 @@ $stmti->close();
         case 'editar':
           include("home/editar.php");
           break;
-          case 'editarr':
-            include("consulta/editarr.php");
-            break;
+        case 'editarr':
+          include("consulta/editarr.php");
+          break;
         case 'atualizaradm':
           include("ADM/atualizaradm.php");
           break;
         case 'insrrestaurante':
-        
+
           header("Location:./inserir restaurante.php");
           break;
         default: //caso n tenha nada a escolher ele vai pra home
@@ -185,8 +185,8 @@ $stmti->close();
     };
   </script>
   <footer>
-<p>Site criado por <strong>Tchibiye</strong></p>
-</footer>
+    <p>Site criado por <strong>Tchibiye</strong></p>
+  </footer>
 </body>
 
 </html>

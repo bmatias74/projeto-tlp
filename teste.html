@@ -1,78 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KINO</title>
-    
+
     <link rel="stylesheet" href="CSS/teste.css">
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 
 </head>
-<body>
- <main>
-  <!-- SLIDER INICIO-->
-  <div class="slider">
-      <div class="slides">
-          <!-- RADIO INICIO-->
-        <input type="radio" id="radio1" name="radio-btn">
-        <input type="radio" id="radio2" name="radio-btn">
-        <input type="radio" id="radio3" name="radio-btn">
-        <input type="radio" id="radio4" name="radio-btn">
-        <!-- RADIO FIM-->
-         <!-- IMAGENS INICIO-->
-         <div class="slide" id="imagem1">
-               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image.jpeg" alt="">
-         </div>
-         <div class="slide" id="imagem2">
-               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image2.jpg" alt="">
-         </div>
-         <div class="slide" id="imagem3">
-               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image3.jpg" alt="">
-         </div>
-         <div class="slide" id="imagem4">
-               <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image4.jpg" alt="">
-         </div>
-         <!-- NAVEGAÇÂO AUTOMÁTICA INICIO -->
-         <div class="navega-auto">
-              <div class="auto-btn1"></div>
-              <div class="auto-btn2"></div>
-              <div class="auto-btn3"></div>
-              <div class="auto-btn4"></div>
-         </div>
-         <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
-      </div>
-          <!-- NAVEGAÇÃO MANUAL INICIO -->
-          <div class="navega-mano">
-              <label for="radio1" class="manual-btn" id="radion1"></label>
-              <label for="radio2" class="manual-btn"  id="radion2"></label>
-              <label for="radio3" class="manual-btn"  id="radion3"></label>
-              <label for="radio4" class="manual-btn"  id="radion4"></label>
-          </div>
-         <!--  NAVEGAÇÃO MANUAL FIM -->
-  </div>
-   <!-- SLIDER FIM-->
- </main>
- 
-<script>
-const slidesContainer = document.querySelector('.slides');
-const radioButtons = document.querySelectorAll('#radio1, #radio2, #radio3, #radio4');
-const navegador = document.querySelectorAll('#radion1, #radion2, #radion3, #radion4');
 
-radioButtons.forEach((radio, index) => {
-    radio.addEventListener('change', () => {
-        if (radio.checked) {
-            navegador.forEach((radion, ind) => {
-                 radion.style.backgroundColor = '';
-                 if (ind === index) {
-                     radion.style.backgroundColor = 'yellow';
-                 }
-             });
-             const marginLeft = -200 * index;
-            slidesContainer.style.marginLeft = `${marginLeft}%`;
-        }
-    });
-});
-</script>
+<body>
+    <main>
+        <!-- SLIDER INICIO-->
+        <div class="slider">
+            <div class="slides">
+                <!-- RADIO INICIO-->
+                <input type="radio" id="radio1" name="radio-btn">
+                <input type="radio" id="radio2" name="radio-btn">
+                <input type="radio" id="radio3" name="radio-btn">
+                <input type="radio" id="radio4" name="radio-btn">
+                <!-- RADIO FIM-->
+                <!-- IMAGENS INICIO-->
+                <div class="slide" id="imagem1">
+                    <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image.jpeg" alt="">
+                </div>
+                <div class="slide" id="imagem2">
+                    <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image2.jpg" alt="">
+                </div>
+                <div class="slide" id="imagem3">
+                    <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image3.jpg" alt="">
+                </div>
+                <div class="slide" id="imagem4">
+                    <img src="IMG_restaurante/Alimilton-2024.04.13-04.46.05pm-image4.jpg" alt="">
+                </div>
+                <!-- NAVEGAÇÂO AUTOMÁTICA INICIO -->
+                <div class="navega-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+                <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
+            </div>
+            <!-- NAVEGAÇÃO MANUAL INICIO -->
+            <div class="navega-mano">
+                <label for="radio1" class="manual-btn" id="radion1"></label>
+                <label for="radio2" class="manual-btn" id="radion2"></label>
+                <label for="radio3" class="manual-btn" id="radion3"></label>
+                <label for="radio4" class="manual-btn" id="radion4"></label>
+            </div>
+            <!--  NAVEGAÇÃO MANUAL FIM -->
+        </div>
+        <!-- SLIDER FIM-->
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const root = document.documentElement;
+            let contador = 1;
+            const slidesContainer = document.querySelector('.slides');
+            const radioButtons = document.querySelectorAll('#radio1, #radio2, #radio3, #radio4');
+            const navegador = document.querySelectorAll('#radion1, #radion2, #radion3, #radion4');
+
+            radioButtons.forEach((radio, index) => {
+                radio.addEventListener('change', () => {
+                    if (radio.checked) {
+                        navegador.forEach((radion, ind) => {
+                            radion.style.backgroundColor = '';
+                            if (ind === index) {
+                                radion.style.backgroundColor = 'red';
+                            }
+                        });
+
+                        const marginLeft = -200 * index;
+                        slidesContainer.style.marginLeft = `${marginLeft}%`;
+                    }
+                });
+            });
+
+            setInterval(function () {
+
+                document.getElementById('radio' + contador).checked = true;
+                radioButtons[contador - 1].dispatchEvent(new Event('change'));
+                contador++;
+                if (contador > 4) {
+                    contador = 1;
+                }
+
+
+            }, 500);
+
+        });
+
+    </script>
 </body>
+
 </html>

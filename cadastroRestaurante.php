@@ -3,8 +3,9 @@ include "db/conexao.php";
 
 
 // Função para processar o upload da imagem
-function processImageUpload($conexao, $imageField, $nome) {
-    if(isset($_FILES[$imageField]["name"])) {
+function processImageUpload($conexao, $imageField, $nome)
+{
+    if (isset($_FILES[$imageField]["name"])) {
         $imageName = $_FILES[$imageField]["name"];
         $imageSize = $_FILES[$imageField]["size"];
         $tmpName = $_FILES[$imageField]["tmp_name"];
@@ -29,7 +30,7 @@ function processImageUpload($conexao, $imageField, $nome) {
 }
 
 $nome = mysqli_real_escape_string($conexao, $_POST["Nome"]);
-$email= mysqli_real_escape_string($conexao, $_POST["Email"]);
+$email = mysqli_real_escape_string($conexao, $_POST["Email"]);
 $telefone = mysqli_real_escape_String($conexao, $_POST["telefone"]);
 $telefone2 = mysqli_real_escape_String($conexao, $_POST["telefone2"]);
 $descricao = mysqli_real_escape_String($conexao, $_POST["descricao"]);
@@ -58,4 +59,3 @@ foreach ($imageFields as $formField => $dbField) {
 }
 
 echo "<script>window.location.href = '../projeto-tlp/Inserir restaurante.php';</script>";
-?>

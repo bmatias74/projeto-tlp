@@ -1,20 +1,22 @@
 <?php
-    session_start(); // Inicia a sessão
-    include("db/conexao.php");
+session_start(); // Inicia a sessão
+include("db/conexao.php");
 
 
-    function msg() {
-      if (isset($_SESSION['message'])) {
-          echo "<p style='color:red'>" . $_SESSION['message'] . "</p>";
-          unset($_SESSION['message']); // Limpa a mensagem após exibição
-      }
+function msg()
+{
+  if (isset($_SESSION['message'])) {
+    echo "<p style='color:red'>" . $_SESSION['message'] . "</p>";
+    unset($_SESSION['message']); // Limpa a mensagem após exibição
   }
-  
+}
+
 
 
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +24,7 @@
   <link rel="stylesheet" href="CSS/Login1.CSS">
   <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
 </head>
+
 <body>
   <header>
     <a href="index.php"><img class="logo" src="logo.png" alt=""></a>
@@ -54,8 +57,8 @@
           <input type="password" placeholder="Repita a senha" name="confirmarsenha" id="csenha" required>
           <small id="senha-error" style="color: red; display: none;">As senhas devem ser iguais.</small>
         </div>
-        <?php 
-            msg();
+        <?php
+        msg();
         ?>
         <button name="cadastrar" id="btn-entrada" disabled>Cadastrar</button>
         <p>Já tem conta? <a href="login.php">Iniciar Sessão</a></p>
@@ -102,4 +105,5 @@
     });
   </script>
 </body>
+
 </html>

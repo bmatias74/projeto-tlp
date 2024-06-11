@@ -4,7 +4,8 @@ include "./db/conexao.php";
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-function processImageUpload($conexao, $imageField, $nome) {
+function processImageUpload($conexao, $imageField, $nome)
+{
     if (isset($_FILES[$imageField]["name"])) {
         $imageName = $_FILES[$imageField]["name"];
         $imageSize = $_FILES[$imageField]["size"];
@@ -67,4 +68,3 @@ if (!headers_sent()) {
 } else {
     echo "Não foi possível redirecionar automaticamente. <a href='../adm.php'>Clique aqui</a> para voltar.";
 }
-?>

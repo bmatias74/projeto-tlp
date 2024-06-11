@@ -1,9 +1,10 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: #7fffd4;
 }
-main{
+
+main {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -12,6 +13,7 @@ main{
     align-items: center;
     justify-content: center;
 }
+
 .slider {
     width: 50%;
     height: 60%;
@@ -29,9 +31,11 @@ main{
     transition: margin-left 0.5s ease;
     width: 100%;
 }
+
 .slides input {
     display: none;
 }
+
 .slide {
     min-width: 100%;
     height: 300px;
@@ -43,32 +47,31 @@ main{
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: fill; 
+    object-fit: fill;
 }
 
 /* CSS PARA NAvegação manual */
 
-        .navega-mano {
-            position: absolute;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            bottom: 10px;
-        }
+.navega-mano {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 10px;
+}
 
-        .manual-btn {
-            border: 2px solid #000000;
-            padding: 5px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+.manual-btn {
+    border: 2px solid #000000;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
 
-        .manual-btn:not(:last-child) {
-            margin-right: 5%;
-        }
+.manual-btn:not(:last-child) {
+    margin-right: 5%;
+}
 
-        .manual-btn:hover {
-            background: #fff;
-        }
-        
+.manual-btn:hover {
+    background: #fff;
+}

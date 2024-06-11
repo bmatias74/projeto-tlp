@@ -1,71 +1,95 @@
-
-header{
+/*  Style do restaurante*/
+header {
 
   background-color: var(--cheader);
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  
-     
-  }
-  .conjunto-logo{
-    display: flex;
-    align-items: center;
-  }
-  .dps-logado{
-    display: flex;
-    align-items: center;
-  }
-  .header{
-      top: 0; 
-   z-index: 1000;
-  
-  position: sticky;
-  }
-.map{
-   border: 5px solid black;
-   overflow: hidden;
+
+
 }
-.map{
-  width: 100%;
+
+article {
+  padding: 10px;
+  
+}
+
+body {}
+
+.mainR {
+  padding: 0;
+  margin: 0 auto;
+}
+
+#mainR {}
+
+.conjunto-logo {
+  display: flex;
   align-items: center;
 }
 
-.map iframe{
-    width: 100%;
-    height: 50vh;
-    align-items: center;
+.dps-logado {
+  display: flex;
+  align-items: center;
 }
-.imagem_p{
-  
-  width: 100%;
-height: auto;
 
+.header {
+  top: 0;
+  z-index: 1000;
 
- /* aspect-ratio: 16/9; Mantém a proporção das imagens */
-  object-fit: cover;
-
- 
+  position: sticky;
 }
-.imagem_pd{
+
+.map {
+  border: 5px solid black;
   overflow: hidden;
-  
-  border: 2px solid black;
- width: 300px;
- height: 300px;
-left: 60%;
- 
 }
+
+.map {
+  margin: 10px auto;
+  width: 78%;
+  align-items: center;
+  shape-outside: 5px 5px black;
+}
+
+.map iframe {
+  width: 100%;
+  height: 50vh;
+  align-items: center;
+}
+
+
+.imagem_pd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid black;
+    width: 900px; 
+    height: 300px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.imagem_pd img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; 
+}
+
 .slider {
-  width: 50%;
-  height: 60%;
+  width: 100%;
+  height: 70%;
   border-radius: 10px;
+
+  margin: 10px auto;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 .slides {
@@ -73,9 +97,11 @@ left: 60%;
   transition: margin-left 0.5s ease;
   width: 100%;
 }
+
 .slides input {
   display: none;
 }
+
 .slide {
   min-width: 100%;
   height: 300px;
@@ -84,6 +110,7 @@ left: 60%;
   justify-content: center;
   transition: margin-left 0.5s ease;
   cursor: grab;
+  font-weight: 600;
 }
 
 .slides:active {
@@ -93,32 +120,31 @@ left: 60%;
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 /* CSS PARA NAvegação manual */
 
-      .navega-mano {
-          position: absolute;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          bottom: 10px;
-      }
+.navega-mano {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  bottom: 10px;
+}
 
-      .manual-btn {
-          border: 2px solid #000000;
-          padding: 5px;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: background 0.3s;
-      }
+.manual-btn {
+  border: 2px solid #000000;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-      .manual-btn:not(:last-child) {
-          margin-right: 5%;
-      }
+.manual-btn:not(:last-child) {
+  margin-right: 5%;
+}
 
-      .manual-btn:hover {
-          background: #000000;
-      }
-
+.manual-btn:hover {
+  background: #000000;
+}
