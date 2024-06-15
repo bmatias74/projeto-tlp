@@ -1,0 +1,46 @@
+
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Saira+Semi+Condensed&display=swap');
+
+:root {
+    --cpadrao: #A16A18;
+    --cheader: #A18B18;
+    --cescuro: #59440D;
+    --cbutton: #866122;
+    --fdestaque: 'Saira Semi Condensed', 'Bebas Neue', sans-serif;
+    --cordefundo: white;
+    --mpesquisah: 5vmin;
+    --tescuro:#1C2626 ;
+}
+body{
+    background-color: var(--tescuro) ;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    width: 20%;
+    min-height: 100vh;
+    background-color:#342626 ;
+}
+ul{
+   list-style-type: none;
+   margin: 5%;
+   display: grid;
+   row-gap: 10%;
+}
+li {
+display: flex;
+align-items: center;
+}
+
+li p {
+    text-align: center;
+    padding: 5%;
+    width: 10%;
+    height: 10%;
+    border-radius: 10%;
+    margin: 1px;
+    background-color: var(--cbutton);
+}

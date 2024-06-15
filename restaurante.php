@@ -1,6 +1,5 @@
 <?php
 include("db/conexao.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -14,110 +13,76 @@ include("db/conexao.php");
     <link rel="stylesheet" href="CSS/Style.CSS">
     <link rel="stylesheet" href="CSS/configstyle.css">
     <link rel="stylesheet" href="CSS/restaurante.css">
-
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
-
 </head>
 
 <body>
     <?php
-
-    $idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
-    $query = "SELECT * FROM restaurante where id_restaurante = {$idrestaurante}"; // Consulta para buscar as imagens
+    // Buscar dados do restaurante
+    $idrestaurante = mysqli_real_escape_string($conexao, $_GET["id"]);
+    $query = "SELECT * FROM restaurante WHERE id_restaurante = {$idrestaurante}";
     $result = mysqli_query($conexao, $query);
 
     if (mysqli_num_rows($result) > 0) {
-
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $imageUrl = $row['imagem_p']; // Caminho da imagem
-            $nomeRestaurante = $row['nome']; // Nome do restaurante
-            $descricao = $row['descricao']; // desecricao do restaurante
-
-
-        }
+        $row = mysqli_fetch_assoc($result);
+        $imageUrl = $row['imagem_p'];
+        $nomeRestaurante = $row['nome'];
+        $descricao = $row['descricao'];
+        $imagem1 = $row['imagem_s1'];
+        $imagem2 = $row['imagem_s2'];
+        $imagem3 = $row['imagem_s3'];
+        $imagem4 = $row['imagem_s4'];
+        $loc_web = $row['web_loc'];
     } else {
+        echo "<p>Nenhuma imagem encontrada.</p>";
     }
 
+    include("itens/header.php");
+    ?>
 
-    ?>
-    <?php
-    include("itens\header.php")
-    ?>
     <input type="hidden" name="pesquisar" id="pesquisaR" value="pesquisa">
-    <input type="hidden" name="nome_restaurante_headesr" id="nome-rh" value="<?= $nomeRestaurante ?>">
+    <input type="hidden" name="nome_restaurante_header" id="nome-rh" value="<?= htmlspecialchars($nomeRestaurante) ?>">
+
     <main class="mainR">
         <div class="imagens"></div>
         <article id="mainR">
-            <!-- PHP INICIO-->
-            <?php
+            <input type="hidden" name="id_usuario" id="id_usuario" value="<?= htmlspecialchars($_SESSION['id']) ?>">
+            <input type="hidden" name="id_restaurante" id="id_restaurante" value="<?= htmlspecialchars($idrestaurante) ?>">
 
-            $idrestaurante =  mysqli_real_escape_string($conexao, $_GET["id"]);
-            $query = "SELECT * FROM restaurante where id_restaurante = {$idrestaurante}"; // Consulta para buscar as imagens
-            $result = mysqli_query($conexao, $query);
-
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $imageUrl = $row['imagem_p']; // Caminho da imagem
-                    $nomeRestaurante = $row['nome']; // Nome do restaurante
-                    $descricao = $row['descricao']; // desecricao do restaurante
-                    $imagem1 = $row['imagem_s1']; // imagem 1 do restaurante
-                    $imagem2 = $row['imagem_s2']; // imagem 2 do restaurante
-                    $imagem3 = $row['imagem_s3']; // imagem 3 do restaurante
-                    $imagem4 = $row['imagem_s4']; // imagem 4 do restaurante
-                    $loc_web = $row['web_loc']; // embebed do google maps
-
-                }
-            } else {
-                echo "<p>Nenhuma imagem encontrada.</p>";
-            }
-
-            mysqli_close($conexao); // Fecha a conexão com o banco de dados
-            ?>
-            <!-- IMAGEM PRINCIPAL INICIO -->
             <div class="imagem_pd">
-                <img class="imagem_p" src="IMG_restaurante/<?= $imageUrl ?>" alt="">
+                <img class="imagem_p" src="IMG_restaurante/<?= htmlspecialchars($imageUrl) ?>" alt="<?= htmlspecialchars($nomeRestaurante) ?>">
             </div>
-            <!-- IMAGEM PRINCIPAL FIM -->
 
-            <!-- PHP FIM-->
-            <!-- SLIDER INICIO-->
             <div class="slider">
                 <div class="slides">
-                    <!-- RADIO INICIO-->
+                    <!-- RADIO INICIO -->
                     <?php
                     $numSlides = 0;
-                    for ($i = 1; $i <= 4; $i++) { // o máximo é de 4 imagens
-                        if (!empty(${"imagem" . $i})) { // Verifique se a imagem não está vazia
+                    for ($i = 1; $i <= 4; $i++) {
+                        if (!empty(${"imagem" . $i})) {
                             $numSlides++;
-                    ?>
-                            <input type="radio" id="radio<?= $i ?>" name="radio-btn">
-                    <?php
+                            echo '<input type="radio" id="radio' . $i . '" name="radio-btn">';
                         }
                     }
                     ?>
-                    <!-- RADIO FIM-->
+                    <!-- RADIO FIM -->
 
-                    <!-- IMAGENS INICIO-->
+                    <!-- IMAGENS INICIO -->
                     <?php
                     for ($i = 1; $i <= $numSlides; $i++) {
-                        if (!empty(${"imagem" . $i})) { // Verifique se a imagem não está vazia
-                    ?>
-                            <div class="slide" id="imagem<?= $i ?>">
-                                <img src="IMG_restaurante/<?= ${"imagem" . $i} ?>" alt="">
-                            </div>
-                    <?php
+                        if (!empty(${"imagem" . $i})) {
+                            echo '<div class="slide" id="imagem' . $i . '">
+                                    <img src="IMG_restaurante/' . htmlspecialchars(${"imagem" . $i}) . '" alt="Imagem ' . $i . '">
+                                  </div>';
                         }
                     }
                     ?>
-                    <!-- NAVEGAÇÂO AUTOMÁTICA INICIO -->
+                    <!-- NAVEGAÇÃO AUTOMÁTICA INICIO -->
                     <div class="navega-auto">
                         <?php
                         for ($i = 1; $i <= $numSlides; $i++) {
-                            if (!empty(${"imagem" . $i})) { // Verifique se a imagem não está vazia
-                        ?>
-                                <div class="auto-btn<?= $i ?>"></div>
-                        <?php
+                            if (!empty(${"imagem" . $i})) {
+                                echo '<div class="auto-btn' . $i . '"></div>';
                             }
                         }
                         ?>
@@ -128,40 +93,128 @@ include("db/conexao.php");
                 <div class="navega-mano">
                     <?php
                     for ($i = 1; $i <= $numSlides; $i++) {
-                        if (!empty(${"imagem" . $i})) { // Verifique se a imagem não está vazia
-                    ?>
-                            <label for="radio<?= $i ?>" class="manual-btn" id="radion<?= $i ?>"></label>
-                    <?php
+                        if (!empty(${"imagem" . $i})) {
+                            echo '<label for="radio' . $i . '" class="manual-btn" id="radion' . $i . '"></label>';
                         }
                     }
                     ?>
                 </div>
-                <!--  NAVEGAÇÃO MANUAL FIM -->
-
-
-
+                <!-- NAVEGAÇÃO MANUAL FIM -->
             </div>
-            <!-- SLIDER FIM-->
-
-            <!-- MAPA INICIO-->
 
             <div class="map">
-                <?php
-                echo $loc_web;
-                ?>
+                <?= $loc_web ?>
             </div>
-            <!-- MAPA FIM-->
 
+            <!-- Favoritar INICIO -->
+            <?php
+            $id_usuario = $_SESSION['id'];
+            $sqlf = "SELECT * FROM favorito WHERE id = '$id_usuario' AND id_restaurante = '$idrestaurante'";
+            $resultadoF = mysqli_query($conexao, $sqlf) or die("Erro na consulta: " . mysqli_error($conexao));
+            $favoritar = 'nfavoritou';
+            if (mysqli_num_rows($resultadoF) > 0) {
+                $favoritar = 'favoritou';
+            }
+            //Número de favoritos
+            $sqlnumerof = "SELECT * FROm favorito where id_restaurante = '$idrestaurante'";
+            $resultadonumerof = mysqli_query($conexao, $sqlnumerof);
+            $numerof = mysqli_num_rows($resultadonumerof);
+            $extenxo;
+            if ($numerof > 1000000) {
+                $numerof = $numerof / 1000000;
+                $extenso = 'Milhão';
+                $numerof = number_format($numerof, 2);
+            } elseif ($numerof > 1000) {
+                $numerof = $numerof / 1000;
+                $extenso = 'Mil';
+                $numerof = number_format($numerof, 3);
+            } else {
+                $extenso = '';
+            }
+
+
+            $numerof .= ' ' . $extenso;
+            ?>
+            <div class="favoritos">
+
+                <input type="hidden" name="" id="alertfavorito" value="<?= $favoritar ?>">
+                <a id="favoritarbtn">
+                    <img src="bx-star.svg" alt="" id="favoritar" value="favorita">
+                </a>
+                <p><?php
+                    echo $numerof;
+                    ?></p>
+            </div>
+
+            <input type="hidden" name="" id="alertlogado" value="<?= $se_logou ?>">
+
+
+            <!-- Favoritar FIM -->
         </article>
     </main>
-    <!-- footer inicio-->
-    <?php
-    include("itens/footer.php");
-    ?>
-    <!-- footer FIM-->
+
+    <?php include("itens/footer.php"); ?>
+
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const root = document.documentElement;
+        const favoritarimg = document.getElementById('favoritar');
+        const alertfavoritoInput = document.getElementById('alertfavorito');
+
+
+        let alertfavorito = alertfavoritoInput.value;
+
+        if (alertfavorito === 'favoritou') {
+            favoritarimg.src = 'bxs-star.svg';
+        } else if (alertfavorito === 'nfavoritou') {
+            favoritarimg.src = 'bx-star.svg';
+        }
+        document.getElementById('favoritarbtn').addEventListener('click', function() {
+
+            if (alertfavorito === 'nfavoritou') {
+                alertfavorito = 'favoritou';
+                alertfavoritoInput.value = 'favoritou';
+                favoritarimg.src = 'bxs-star.svg';
+                favoritar()
+            } else if (alertfavorito === 'favoritou') {
+                alertfavorito = 'nfavoritou';
+                alertfavoritoInput.value = 'nfavoritou';
+                favoritarimg.src = 'bx-star.svg';
+                favoritar()
+            }
+        });
+
+
+
+
+        function favoritar() {
+
+            const alertlogado = document.getElementById('alertlogado').value;
+            if (alertlogado === 'nlogado') {
+                alert("Se cadastre");
+            }
+
+            var dados = {
+                id_restaurante: document.getElementById('id_restaurante').value,
+                id_usuario: document.getElementById('id_usuario').value
+            };
+
+            fetch('favoritar.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dados)
+                })
+                .then(response => response.json())
+                .then(dados => {
+                    console.log(dados);
+                })
+                .catch(error => {
+                    console.error('ERRO:', error);
+                });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
             let contador = 1;
             const slidesContainer = document.querySelector('.slides');
             const radioButtons = document.querySelectorAll('#radio1, #radio2, #radio3, #radio4');
@@ -177,31 +230,24 @@ include("db/conexao.php");
                             }
                         });
 
-                        const marginLeft = -200 * index;
-                        slidesContainer.style.marginLeft = `${marginLeft}%`;
+                        slidesContainer.style.marginLeft = `-${200 * index}%`;
                     }
                 });
             });
 
-            setInterval(function() {
-
+            setInterval(() => {
                 document.getElementById('radio' + contador).checked = true;
                 radioButtons[contador - 1].dispatchEvent(new Event('change'));
                 contador++;
                 if (contador > 4) {
                     contador = 1;
                 }
-
-
-            }, 500);
-
+            }, 5000); // Ajuste do intervalo conforme necessário
         });
     </script>
-    </script>
     <script src="JS/principal.js"></script>
-    <script>
-
-    </script>
 </body>
 
 </html>
+
+<?php mysqli_close($conexao); ?>
