@@ -12,9 +12,9 @@
 <body>
     <nav>
         <ul>
-            <li><p>Perfil</p></li>
-            <li><p>Perfil</p></li>
-            <li><p>Sair</p></li>
+            <li><p><a href="">Perfil</a></p></li>
+            <li><p><a href="">Favoritados</a></p></li>
+            <li><p><a href="../logout.php">Terminar sessão</a></p></li>
 
         </ul>
     </nav>

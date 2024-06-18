@@ -9,7 +9,7 @@ $idtchibiye =  mysqli_real_escape_string($conexao, $_GET["idusuario"]);
                     $resultado = mysqli_query($conexao,$sql) or die("Erro ao recuperar os dados.". mysqli_error($conexao));
                   
 
-    header("Location: ADM.php?menuop=home");
+    header("Location: adm.php?menuop=home");
     echo "mambo bem eliminado";
             exit;
 

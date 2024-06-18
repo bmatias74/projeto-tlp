@@ -44,7 +44,6 @@
                 <th>Telefone</th>
                 <th>Email</th>
                 <th>Data de nascimento</th>
-                <th>Editar</a></th>
                 <th>Excluir</th>
             </tr>
         </thead>
@@ -95,7 +94,6 @@
         echo "<td>{$linha["telefone"]}</td>";
         echo "<td>{$linha["email"]}</td>";
         echo "<td>{$linha["datadenascimento"]}</td>";
-        echo "<td><a href=\"adm.php?menuop=editar&idusuario={$linha["id"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/edit.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
         echo "<td><a href=\"adm.php?menuop=certeza&idusuario={$linha["id"]}\" style=\"display:flex; justify-content:center;\"><img src=\"./Imagens/icons/delete.png\" alt=\"\" style=\"width: 20px;\"></a></td>";
     
         echo "</tr>";
