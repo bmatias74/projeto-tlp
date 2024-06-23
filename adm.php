@@ -167,7 +167,7 @@ $_SESSION['nome'] = $nome;
           break;
         case 'insrrestaurante':
 
-          header("Location:./inserir restaurante.php");
+          include("inserir restaurante.php");
           break;
         default: //caso n tenha nada a escolher ele vai pra home
           include("home/home.php");

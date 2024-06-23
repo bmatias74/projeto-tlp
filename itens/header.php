@@ -57,7 +57,7 @@ $_SESSION['id'] = $id;
       <button id="settingsBtn" class="menu-btn"><img src="IMG/gear-svgrepo-com.svg" alt="engrenagem" height="19" width="19"></button>
       <div id="settingsMenu" class="settings-menu hidden">
         <ul>
-          <li><a href="#">Perfil</a></li>
+          <li><a href="usuario\configuser.php">Configurações</a></li>
           <li><a href="logout.php">Sair</a></li>
         </ul>
       </div>
@@ -73,3 +73,4 @@ $_SESSION['id'] = $id;
     </ul>
   </nav>
 </div>
+<script src="JS/principal.js"></script>

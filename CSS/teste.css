@@ -75,3 +75,11 @@ main {
 .manual-btn:hover {
     background: #fff;
 }
+.co{
+
+}
+.co img{
+    width:  2pp;
+    height: 50px;
+    object-fit: cover;
+}

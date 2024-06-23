@@ -28,6 +28,9 @@ include("db/conexao.php");
         $imageUrl = $row['imagem_p'];
         $nomeRestaurante = $row['nome'];
         $descricao = $row['descricao'];
+        $twitter = $row['twitter'];
+        $instagram = $row['instagram'];
+        $facebook = $row['facebook'];
         $imagem1 = $row['imagem_s1'];
         $imagem2 = $row['imagem_s2'];
         $imagem3 = $row['imagem_s3'];
@@ -45,14 +48,27 @@ include("db/conexao.php");
 
     <main class="mainR">
         <div class="imagens"></div>
-        <article id="mainR">
+      
             <input type="hidden" name="id_usuario" id="id_usuario" value="<?= htmlspecialchars($_SESSION['id']) ?>">
             <input type="hidden" name="id_restaurante" id="id_restaurante" value="<?= htmlspecialchars($idrestaurante) ?>">
 
-            <div class="imagem_pd">
-                <img class="imagem_p" src="IMG_restaurante/<?= htmlspecialchars($imageUrl) ?>" alt="<?= htmlspecialchars($nomeRestaurante) ?>">
-            </div>
+            <section class="sobre">
+                <div class="imagem_pd">
+                    <img class="imagem_p" src="IMG_restaurante/<?= htmlspecialchars($imageUrl) ?>" alt="<?= htmlspecialchars($nomeRestaurante) ?>">
+                </div>
+                <div class="sobre-text">
+                    <h1> Acerca do nosso restaurante</h1>
+                    <p> <?= $descricao ?></p>
+                </div>
+            </section>
+                <article class="contactos">
+                    <section class="redes">
+                    
+                    </section>
+                    <section class="contacto">
 
+                    </section>
+                </article>
             <div class="slider">
                 <div class="slides">
                     <!-- RADIO INICIO -->
@@ -112,6 +128,7 @@ include("db/conexao.php");
             $sqlf = "SELECT * FROM favorito WHERE id = '$id_usuario' AND id_restaurante = '$idrestaurante'";
             $resultadoF = mysqli_query($conexao, $sqlf) or die("Erro na consulta: " . mysqli_error($conexao));
             $favoritar = 'nfavoritou';
+
             if (mysqli_num_rows($resultadoF) > 0) {
                 $favoritar = 'favoritou';
             }
@@ -119,21 +136,6 @@ include("db/conexao.php");
             $sqlnumerof = "SELECT * FROm favorito where id_restaurante = '$idrestaurante'";
             $resultadonumerof = mysqli_query($conexao, $sqlnumerof);
             $numerof = mysqli_num_rows($resultadonumerof);
-            $extenxo;
-            if ($numerof > 1000000) {
-                $numerof = $numerof / 1000000;
-                $extenso = 'Milhão';
-                $numerof = number_format($numerof, 2);
-            } elseif ($numerof > 1000) {
-                $numerof = $numerof / 1000;
-                $extenso = 'Mil';
-                $numerof = number_format($numerof, 3);
-            } else {
-                $extenso = '';
-            }
-
-
-            $numerof .= ' ' . $extenso;
             ?>
             <div class="favoritos">
 
@@ -141,16 +143,15 @@ include("db/conexao.php");
                 <a id="favoritarbtn">
                     <img src="bx-star.svg" alt="" id="favoritar" value="favorita">
                 </a>
-                <p><?php
-                    echo $numerof;
-                    ?></p>
+                <p id="numeroF"></p>
+                <input type="hidden" name="" id="nFavoritos" value="<?= $numerof ?>">
             </div>
 
             <input type="hidden" name="" id="alertlogado" value="<?= $se_logou ?>">
 
 
             <!-- Favoritar FIM -->
-        </article>
+
     </main>
 
     <?php include("itens/footer.php"); ?>
@@ -158,31 +159,51 @@ include("db/conexao.php");
     <script>
         const favoritarimg = document.getElementById('favoritar');
         const alertfavoritoInput = document.getElementById('alertfavorito');
-
+        let Nfavorito = document.getElementById('nFavoritos').value;
+        const pfavorito = document.getElementById('numeroF');
+        let extenxo;
+        let numerof;
+        numerof = Nfavorito;
+        if (numerof > 1000000) {
+            numerof = numerof / 1000000;
+            extenso = 'Milhão';
+            numerof = numerof.toFixed(2);
+        } else if (numerof > 1000) {
+            numerof = numerof / 1000;
+            extenso = 'Mil';
+            numerof = numerof.toFixed(3);
+        } else {
+            extenso = '';
+        }
+        numerof += ' ' + extenso;
 
         let alertfavorito = alertfavoritoInput.value;
 
         if (alertfavorito === 'favoritou') {
             favoritarimg.src = 'bxs-star.svg';
+            testnumerof = parseFloat(numerof);
         } else if (alertfavorito === 'nfavoritou') {
             favoritarimg.src = 'bx-star.svg';
+            testnumerof = parseFloat(numerof) + 1;
         }
-        document.getElementById('favoritarbtn').addEventListener('click', function() {
 
+        document.getElementById('favoritarbtn').addEventListener('click', function() {
             if (alertfavorito === 'nfavoritou') {
                 alertfavorito = 'favoritou';
-                alertfavoritoInput.value = 'favoritou';
                 favoritarimg.src = 'bxs-star.svg';
-                favoritar()
+                pfavorito.innerText = parseFloat(numerof) + 1;
+                pfavorito.innerText = testnumerof;
+                favoritar();
             } else if (alertfavorito === 'favoritou') {
                 alertfavorito = 'nfavoritou';
-                alertfavoritoInput.value = 'nfavoritou';
                 favoritarimg.src = 'bx-star.svg';
-                favoritar()
+                pfavorito.innerText = parseFloat(numerof) - 1;
+                favoritar();
             }
         });
 
 
+        pfavorito.innerText = numerof;
 
 
         function favoritar() {
@@ -228,10 +249,15 @@ include("db/conexao.php");
                             if (ind === index) {
                                 radion.style.backgroundColor = 'red';
                             }
+                          
                         });
 
                         slidesContainer.style.marginLeft = `-${200 * index}%`;
                     }
+                });
+                radi.addEventListener('click', () => {
+                    let inde = index;
+                    contador = inde;
                 });
             });
 
@@ -242,7 +268,7 @@ include("db/conexao.php");
                 if (contador > 4) {
                     contador = 1;
                 }
-            }, 5000); // Ajuste do intervalo conforme necessário
+            }, 500); // Ajuste do intervalo conforme necessário
         });
     </script>
     <script src="JS/principal.js"></script>

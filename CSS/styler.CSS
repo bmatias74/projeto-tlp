@@ -127,7 +127,7 @@ h1{
     width: 125px;
     position: relative;
     margin: auto;
-    border: 0.3vmin solid black;
+  
     padding: 15px 60px;
   }
   
@@ -190,6 +190,47 @@ input{
 width: 100%;
     border: 1px solid #ccc;
     border-bottom-width: 2px;
+}
+.radios {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    margin-right: 1vw;
+}
+
+.radio label{
+    font-size: 1rem;
+    line-height: 1; 
+    cursor: pointer;
+}
+
+.radio {
+    display: flex;
+    margin-right: 13%;
+}
+
+.radio input[type="checkbox"] {
+    appearance: none; 
+    width: 20px;
+    height: 20px;
+    border: 2px solid #381d0b;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    vertical-align: middle; 
+}
+
+.radio input[type="checkbox"]:checked::before {
+    content: "\2713"; 
+    display: block;
+    text-align: center;
+    line-height: 18px;
+    color: #ffffff;
 }
 button{
     display: block;

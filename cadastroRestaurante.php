@@ -34,11 +34,11 @@ $email = mysqli_real_escape_string($conexao, $_POST["Email"]);
 $telefone = mysqli_real_escape_String($conexao, $_POST["telefone"]);
 $telefone2 = mysqli_real_escape_String($conexao, $_POST["telefone2"]);
 $descricao = mysqli_real_escape_String($conexao, $_POST["descricao"]);
-$localizacao = mysqli_real_escape_String($conexao, $_POST["morada"]);
-$morada = mysqli_real_escape_String($conexao, $_POST["localizacao"]);
-$facebook = mysqli_real_escape_String($conexao, $_POST["facebook"]);
-$twitter = mysqli_real_escape_String($conexao, $_POST["twitter"]);
-$instagram = mysqli_real_escape_String($conexao, $_POST["instagram"]);
+$localizacao = $_POST["localizacao"];
+$morada = mysqli_real_escape_String($conexao, $_POST["morada"]);
+$facebook =  $_POST["facebook"];
+$twitter =  $_POST["twitter"];
+$instagram =  $_POST["instagram"];
 
 // Primeiro, insira o registro básico do restaurante
 $query = "INSERT INTO restaurante (nome, email,telefone,telefone2,descricao,web_loc,facebook,twitter,instagram,morada) VALUES ('$nome', '$email','$telefone','$telefone2','$descricao','$localizacao','$facebook','$twitter','$instagram','$morada')";

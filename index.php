@@ -32,7 +32,7 @@ if (isset($_GET['search'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KINO</title>
+  <title>COKULIMER</title>
   <link rel="stylesheet" href="CSS/Style.CSS">
   <link rel="stylesheet" href="CSS/configstyle.css">
   <link rel="shortcut icon" href="logo.ico" type="image/x-icon">

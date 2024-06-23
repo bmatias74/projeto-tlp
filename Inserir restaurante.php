@@ -87,6 +87,24 @@
         </div>
 
       </div>
+      </div>
+      <div class="radios">
+        <div class="radio">
+          <input value="N/A" type="checkbox" name="redes" id="twitterc">
+          <label for="redes">CLique aqui se não houver twitter</label>
+
+        </div>
+
+        <div class="radio">
+          <input value="N/A" type="checkbox" name="redes" id="instagramc">
+          <label for="redes">CLique aqui se não houver instagram</label>
+        </div>
+        <div class="radio">
+          <input value="N/A" type="checkbox" name="redes" id="facebookc">
+          <label for="redes">CLique aqui se não houver facebook</label>
+        </div>
+
+      </div>
       <br>
       <div class="muitos_uploads">
         <!-- Image 2-->
@@ -157,11 +175,38 @@
       updateImagePreview('imageInput4', 'imagePreview4');
       updateImagePreview('imageInput5', 'imagePreview5');
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const instagram = document.getElementById('instagram');
+        const twitter = document.getElementById('twitter');
+        const face = document.getElementById('facebook');
 
+        const instagramc = document.getElementById('instagramc');
+        const twitterc = document.getElementById('twitterc');
+        const facec = document.getElementById('facebookc');
+
+        instagramc.addEventListener('change', function() {
+          if (instagramc.checked) {
+            instagram.value = instagramc.value;
+          }
+
+        });
+
+        twitterc.addEventListener('change', function() {
+          if (twitterc.checked) {
+            twitter.value = twitterc.value;
+          }
+        });
+
+        facec.addEventListener('change', function() {
+          if (facec.checked) {
+            face.value = facec.value;
+          }
+        });
+      });
+    </script>
   </main>
-  <footer>
-    <p>Site criado por <strong>Tchibiye</strong></p>
-  </footer>
+
   <script>
     const inputtelefone = document.getElementById('telefone');
     const telefoneError = document.getElementById('telefone-error');
