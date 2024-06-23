@@ -1,6 +1,17 @@
 <?php
 include("db/conexao.php");
 // pesquisa
+if (isset($_GET['action']) && $_GET['action'] == 'reset') {
+  // Retorna todos os restaurantes
+  $query = $conexao->prepare("SELECT * FROM restaurante");
+  $query->execute();
+  $resultados = $query->get_result();
+  $restaurantesR = $resultados->fetch_all(MYSQLI_ASSOC);
+  header('Content-Type: application/json');
+  echo json_encode($restaurantesR);
+  exit;
+}
+
 if (isset($_GET['search'])) {
   $searchterm = $_GET['search'];
   $searchterm = "%$searchterm%";
@@ -31,8 +42,9 @@ if (isset($_GET['search'])) {
 <body>
   <?php
   include("itens\header.php")
-  ?>
-  <main>
+  ?>   
+
+  <main >
     <h1>Sitios do seu agrado, para encher a barriga</h1>
     <article>
 

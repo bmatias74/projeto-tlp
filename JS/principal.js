@@ -1,24 +1,27 @@
 //barra de pesquisa 
-pesquisaR = document.getElementById('pesquisaR');
-mainRestaurante = document.getElementById('mainR');
-
 document.addEventListener('DOMContentLoaded', function () {
+  pesquisaR = document.getElementById('pesquisaR');
+mainRestaurante = document.getElementById('mainR');
   document.getElementById('searchbtn').addEventListener('click', function (event) {
     event.preventDefault();
     fetchResults();
+    if (pesquisaR.value == 'pesquisa') {
+      mainRestaurante.innerHTML = ''
+     }
   });
 
   document.getElementById('searchInput').addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
       event.preventDefault();
       fetchResults();
+      if (pesquisaR.value == 'pesquisa') {
+        mainRestaurante.innerHTML = ''
+       }
     }
   });
 
   function fetchResults() {
-    if (pesquisaR.value == 'pesquisa') {
-     mainRestaurante.innerHTML = ''
-    }
+
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const searchterm = searchInput;
     if (searchterm) {
@@ -163,6 +166,38 @@ eraseButton.addEventListener('click', function () {
   eraseButton.style.display = 'none';
 });
 
+/* 
+eraseButton.addEventListener('click', function () {
+  resetContent();
+  searchInput.value = '';
+  eraseButton.style.display = 'none';
+});
 
+function resetContent() {
+  fetch('index.php?action=reset')
+    .then(response => response.json())
+    .then(data => {
+      updateRestaurantList(data);
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function updateRestaurantList(data) {
+  const rContainer = document.querySelector('.imagens');
+  rContainer.innerHTML = '';
+  if (data.length > 0) {
+    data.forEach(restaurant => {
+      const restaurantDiv = document.createElement('div');
+      restaurantDiv.classList.add('co');
+      restaurantDiv.innerHTML = `
+        <a href='restaurante.php?id=${restaurant.id_restaurante}'><img src='IMG_restaurante/${restaurant.imagem_p}' alt='Restaurante ${restaurant.nome}'></a>
+        <figcaption for='text'>${restaurant.nome}</figcaption>`;
+      rContainer.appendChild(restaurantDiv);
+    });
+  } else {
+    rContainer.innerHTML = '<p class="s_restaurante">Nenhum Restaurante Encontrado</p>';
+  }
+}
+  */
 
 
