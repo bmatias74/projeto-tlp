@@ -45,112 +45,105 @@ include("db/conexao.php");
 
     <input type="hidden" name="pesquisar" id="pesquisaR" value="pesquisa">
     <input type="hidden" name="nome_restaurante_header" id="nome-rh" value="<?= htmlspecialchars($nomeRestaurante) ?>">
-
-    <main class="mainR">
-        <div class="imagens"></div>
-      
-            <input type="hidden" name="id_usuario" id="id_usuario" value="<?= htmlspecialchars($_SESSION['id']) ?>">
-            <input type="hidden" name="id_restaurante" id="id_restaurante" value="<?= htmlspecialchars($idrestaurante) ?>">
-
-            <section class="sobre">
-                <div class="imagem_pd">
-                    <img class="imagem_p" src="IMG_restaurante/<?= htmlspecialchars($imageUrl) ?>" alt="<?= htmlspecialchars($nomeRestaurante) ?>">
-                </div>
-                <div class="sobre-text">
-                    <h1> Acerca do nosso restaurante</h1>
-                    <p> <?= $descricao ?></p>
-                </div>
-            </section>
-                <article class="contactos">
-                    <section class="redes">
-                    
-                    </section>
-                    <section class="contacto">
-
-                    </section>
-                </article>
-            <div class="slider">
-                <div class="slides">
-                    <!-- RADIO INICIO -->
-                    <?php
-                    $numSlides = 0;
-                    for ($i = 1; $i <= 4; $i++) {
-                        if (!empty(${"imagem" . $i})) {
-                            $numSlides++;
-                            echo '<input type="radio" id="radio' . $i . '" name="radio-btn">';
+  
+    <main class="mainR" >
+       
+    <div class="imagens"></div>
+    <article id="mainR">
+        
+                <input type="hidden" name="id_usuario" id="id_usuario" value="<?= htmlspecialchars($_SESSION['id']) ?>">
+                <input type="hidden" name="id_restaurante" id="id_restaurante" value="<?= htmlspecialchars($idrestaurante) ?>">
+                <section class="sobre">
+                    <div class="imagem_pd">
+                        <img class="imagem_p" src="IMG_restaurante/<?= htmlspecialchars($imageUrl) ?>" alt="<?= htmlspecialchars($nomeRestaurante) ?>">
+                    </div>
+                    <div class="sobre-text">
+                        <h1> Acerca do nosso restaurante</h1>
+                        <p> <?= $descricao ?></p>
+                    </div>
+                </section>
+                    <article class="contactos">
+                        <section class="redes">
+        
+                        </section>
+                        <section class="contacto">
+                        </section>
+                    </article>
+                <div class="slider">
+                    <div class="slides">
+                        <!-- RADIO INICIO -->
+                        <?php
+                        $numSlides = 0;
+                        for ($i = 1; $i <= 4; $i++) {
+                            if (!empty(${"imagem" . $i})) {
+                                $numSlides++;
+                                echo '<input type="radio" id="radio' . $i . '" name="radio-btn">';
+                            }
                         }
-                    }
-                    ?>
-                    <!-- RADIO FIM -->
-
-                    <!-- IMAGENS INICIO -->
-                    <?php
-                    for ($i = 1; $i <= $numSlides; $i++) {
-                        if (!empty(${"imagem" . $i})) {
-                            echo '<div class="slide" id="imagem' . $i . '">
-                                    <img src="IMG_restaurante/' . htmlspecialchars(${"imagem" . $i}) . '" alt="Imagem ' . $i . '">
-                                  </div>';
-                        }
-                    }
-                    ?>
-                    <!-- NAVEGAÇÃO AUTOMÁTICA INICIO -->
-                    <div class="navega-auto">
+                        ?>
+                        <!-- RADIO FIM -->
+                        <!-- IMAGENS INICIO -->
                         <?php
                         for ($i = 1; $i <= $numSlides; $i++) {
                             if (!empty(${"imagem" . $i})) {
-                                echo '<div class="auto-btn' . $i . '"></div>';
+                                echo '<div class="slide" id="imagem' . $i . '">
+                                        <img src="IMG_restaurante/' . htmlspecialchars(${"imagem" . $i}) . '" alt="Imagem ' . $i . '">
+                                      </div>';
+                            }
+                        }
+                        ?>
+                        <!-- NAVEGAÇÃO AUTOMÁTICA INICIO -->
+                        <div class="navega-auto">
+                            <?php
+                            for ($i = 1; $i <= $numSlides; $i++) {
+                                if (!empty(${"imagem" . $i})) {
+                                    echo '<div class="auto-btn' . $i . '"></div>';
+                                }
+                            }
+                            ?>
+                        </div>
+                        <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
+                    </div>
+                    <!-- NAVEGAÇÃO MANUAL INICIO -->
+                    <div class="navega-mano">
+                        <?php
+                        for ($i = 1; $i <= $numSlides; $i++) {
+                            if (!empty(${"imagem" . $i})) {
+                                echo '<label for="radio' . $i . '" class="manual-btn" id="radion' . $i . '"></label>';
                             }
                         }
                         ?>
                     </div>
-                    <!-- NAVEGAÇÃO AUTOMÁTICA FIM -->
+                    <!-- NAVEGAÇÃO MANUAL FIM -->
                 </div>
-                <!-- NAVEGAÇÃO MANUAL INICIO -->
-                <div class="navega-mano">
-                    <?php
-                    for ($i = 1; $i <= $numSlides; $i++) {
-                        if (!empty(${"imagem" . $i})) {
-                            echo '<label for="radio' . $i . '" class="manual-btn" id="radion' . $i . '"></label>';
-                        }
-                    }
-                    ?>
+                <div class="map">
+                    <?= $loc_web ?>
                 </div>
-                <!-- NAVEGAÇÃO MANUAL FIM -->
-            </div>
-
-            <div class="map">
-                <?= $loc_web ?>
-            </div>
-
-            <!-- Favoritar INICIO -->
-            <?php
-            $id_usuario = $_SESSION['id'];
-            $sqlf = "SELECT * FROM favorito WHERE id = '$id_usuario' AND id_restaurante = '$idrestaurante'";
-            $resultadoF = mysqli_query($conexao, $sqlf) or die("Erro na consulta: " . mysqli_error($conexao));
-            $favoritar = 'nfavoritou';
-
-            if (mysqli_num_rows($resultadoF) > 0) {
-                $favoritar = 'favoritou';
-            }
-            //Número de favoritos
-            $sqlnumerof = "SELECT * FROm favorito where id_restaurante = '$idrestaurante'";
-            $resultadonumerof = mysqli_query($conexao, $sqlnumerof);
-            $numerof = mysqli_num_rows($resultadonumerof);
-            ?>
-            <div class="favoritos">
-
-                <input type="hidden" name="" id="alertfavorito" value="<?= $favoritar ?>">
-                <a id="favoritarbtn">
-                    <img src="bx-star.svg" alt="" id="favoritar" value="favorita">
-                </a>
-                <p id="numeroF"></p>
-                <input type="hidden" name="" id="nFavoritos" value="<?= $numerof ?>">
-            </div>
-
-            <input type="hidden" name="" id="alertlogado" value="<?= $se_logou ?>">
-
-
-            <!-- Favoritar FIM -->
+                <!-- Favoritar INICIO -->
+                <?php
+                $id_usuario = $_SESSION['id'];
+                $sqlf = "SELECT * FROM favorito WHERE id = '$id_usuario' AND id_restaurante = '$idrestaurante'";
+                $resultadoF = mysqli_query($conexao, $sqlf) or die("Erro na consulta: " . mysqli_error($conexao));
+                $favoritar = 'nfavoritou';
+                if (mysqli_num_rows($resultadoF) > 0) {
+                    $favoritar = 'favoritou';
+                }
+                //Número de favoritos
+                $sqlnumerof = "SELECT * FROm favorito where id_restaurante = '$idrestaurante'";
+                $resultadonumerof = mysqli_query($conexao, $sqlnumerof);
+                $numerof = mysqli_num_rows($resultadonumerof);
+                ?>
+                <div class="favoritos">
+                    <input type="hidden" name="" id="alertfavorito" value="<?= $favoritar ?>">
+                    <a id="favoritarbtn">
+                        <img src="bx-star.svg" alt="" id="favoritar" value="favorita">
+                    </a>
+                    <p id="numeroF"></p>
+                    <input type="hidden" name="" id="nFavoritos" value="<?= $numerof ?>">
+                </div>
+                <input type="hidden" name="" id="alertlogado" value="<?= $se_logou ?>">
+                <!-- Favoritar FIM -->
+    </article>
 
     </main>
 

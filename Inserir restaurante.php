@@ -55,6 +55,21 @@
           <input type="telephone" placeholder="Insira o número de telefone" name="telefone2" id="telefone2" maxlength="9">
           <small id="telefone-error2" style="color: red; display: none;">O número de telefone deve ter exatamente 9 dígitos.</small>
         </div>
+        <!-- TELEFONE CHECKS-->
+        <div class="radios">
+          <div class="radio">
+            <input value="N/A" type="checkbox" name="contactos" id="telefonec">
+            <label for="contactos">Clique aqui se não houver TELEFONE </label>
+
+          </div>
+
+          <div class="radio">
+            <input value="N/A" type="checkbox" name="contactos" id="telefone2c">
+            <label for="contactos">Cique aqui se não houver Telefone2 </label>
+          </div>
+
+
+        </div>
         <!-- Descrição-->
         <div>
           <label for="data">Descrição</span></label>
@@ -91,17 +106,17 @@
       <div class="radios">
         <div class="radio">
           <input value="N/A" type="checkbox" name="redes" id="twitterc">
-          <label for="redes">CLique aqui se não houver twitter</label>
+          <label for="redes">Clique aqui se não houver twitter</label>
 
         </div>
 
         <div class="radio">
           <input value="N/A" type="checkbox" name="redes" id="instagramc">
-          <label for="redes">CLique aqui se não houver instagram</label>
+          <label for="redes">Clique aqui se não houver instagram</label>
         </div>
         <div class="radio">
           <input value="N/A" type="checkbox" name="redes" id="facebookc">
-          <label for="redes">CLique aqui se não houver facebook</label>
+          <label for="redes">Clique aqui se não houver facebook</label>
         </div>
 
       </div>
@@ -180,7 +195,6 @@
         const instagram = document.getElementById('instagram');
         const twitter = document.getElementById('twitter');
         const face = document.getElementById('facebook');
-
         const instagramc = document.getElementById('instagramc');
         const twitterc = document.getElementById('twitterc');
         const facec = document.getElementById('facebookc');
@@ -203,6 +217,25 @@
             face.value = facec.value;
           }
         });
+
+        //check do telefone
+        const telefone = document.getElementById('telefone');
+        const telefone2 = document.getElementById('telefone2');
+        const telefonec = document.getElementById('telefonec');
+        const telefone2c = document.getElementById('telefone2c');
+        telefone2c.addEventListener('change', function() {
+          if (telefone2c.checked) {
+            telefone2.value = telefone2c.value;
+          }
+
+        });
+
+        telefonec.addEventListener('change', function() {
+          if (telefonec.checked) {
+            telefone.value = telefonec.value;
+          }
+        });
+
       });
     </script>
   </main>

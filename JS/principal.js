@@ -1,22 +1,22 @@
 //barra de pesquisa 
 document.addEventListener('DOMContentLoaded', function () {
-  pesquisaR = document.getElementById('pesquisaR');
+  pesquisaR = document.getElementById('pesquisaR').value;
 mainRestaurante = document.getElementById('mainR');
   document.getElementById('searchbtn').addEventListener('click', function (event) {
     event.preventDefault();
     fetchResults();
-    if (pesquisaR.value == 'pesquisa') {
-      mainRestaurante.innerHTML = ''
-     }
+
+      mainRestaurante.innerHTML = '';
+     
   });
 
   document.getElementById('searchInput').addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
       event.preventDefault();
       fetchResults();
-      if (pesquisaR.value == 'pesquisa') {
-        mainRestaurante.innerHTML = ''
-       }
+     
+        mainRestaurante.innerHTML = '';
+       
     }
   });
 
