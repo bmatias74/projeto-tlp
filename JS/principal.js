@@ -6,7 +6,7 @@ mainRestaurante = document.getElementById('mainR');
     event.preventDefault();
     fetchResults();
 
-      mainRestaurante.innerHTML = '';
+     
      
   });
 
@@ -14,8 +14,7 @@ mainRestaurante = document.getElementById('mainR');
     if (event.key === 'Enter') {
       event.preventDefault();
       fetchResults();
-     
-        mainRestaurante.innerHTML = '';
+   
        
     }
   });
@@ -23,6 +22,14 @@ mainRestaurante = document.getElementById('mainR');
   function fetchResults() {
 
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    if (searchInput.length > 0) {
+        
+      mainRestaurante.innerHTML = '';
+    }
+    if (searchInput.length === 0) {
+      location.href = "index.php";
+  }
+  
     const searchterm = searchInput;
     if (searchterm) {
       fetch(`index.php?search=${searchterm}`)
@@ -45,6 +52,7 @@ mainRestaurante = document.getElementById('mainR');
         })
         .catch(error => console.error('Error:', error));
     }
+    
   }
 });
 // Tela do restaurante

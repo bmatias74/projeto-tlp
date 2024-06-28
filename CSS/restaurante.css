@@ -1,7 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+  --cpadrao: #edcc9c;
+  --cdestaque: #d0b58c;
+
+}
+
 /*  Style do restaurante*/
-*{
+* {
   margin: 0;
   padding: 0;
+  font-size: clamp(0.5rem, 0.5vw + 0.5rem, 1.5rem);
 }
 header {
 
@@ -13,15 +22,20 @@ header {
 
 }
 
+h1 {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.5rem, 2vw + 1rem, 3rem);;
+}
+
 article {
   padding: 10px;
-  
+
 }
 
 body {}
 
 .mainR {
-
+  background-color: var(--cpadrao);
 }
 
 #mainR {}
@@ -60,7 +74,9 @@ body {}
   height: 50vh;
   align-items: center;
 }
+
 /*Descrição do  restaurante*/
+
 .sobre {
   display: flex;
   align-items: flex-start;
@@ -72,26 +88,28 @@ body {}
 .sobre .sobre-text {
   width: 60%;
   padding: 0 20px;
+  text-align: center;
 }
 
 .sobre .sobre-text h1 {
-  font-size: 2rem; 
-  color: #333;
+  font-size: clamp(1.5rem, 2vw + 1rem, 3rem);
+  color: #222222;
   margin-bottom: 10px;
 }
 
+
 .sobre .sobre-text p {
-  font-size: 1.2rem; 
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.5rem);
   line-height: 1.6;
-  color: #666; 
+  color: #272525;
 }
 
 
 .imagem_pd {
 
-  overflow: hidden; 
- width: 400px; 
-  height: auto; 
+  overflow: hidden;
+  width: 400px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,18 +120,99 @@ body {}
 
 .imagem_pd img {
   border: 4px solid black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 99%;
   height: auto;
-  object-fit: cover; 
+  object-fit: cover;
 }
-.favoritos{
+
+/* favoriots */
+.favoritos {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--cescuro);
+  border-radius: 16px;
+  padding: 4px 8px;
+  font-family: Arial, sans-serif;
+  color: white;
+  min-width: 80px;
+  justify-content: space-between;
+}
+
+.favoritos #numeroF {
+  font-size: large;
+}
+
+.favoritos a {
+  margin-right: 6px;
+}
+
+/* Contactos */
+.contactos {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--cdestaque);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.149);
+
+  border-radius: 8px;
+}
+
+.redes a {
+  transition: transform 0.2s ease;
+}
+
+.redes a:hover {
+  transform: scale(1.1);
+  border-radius: 8px;
+  background-color: rgb(241, 200, 149);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.4%;
+  width: 50%;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, padding 0.2s ease-in-out;
+}
+
+.redes ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.redes ul li {
+  
+  margin-bottom: 10px;
+  width: 30%;
+}
+
+.redes ul li a {
+
+  text-decoration: none;
+  color: #333;
   display: flex;
   align-items: center;
-  gap: 0,5%;
 }
+
+.contactos img {
+  width: 30px;
+  margin-right: 10px
+}
+
+/* Estilo para a seção de informações de contato */
+.contacto {
+  margin-top: 20px;
+}
+
+.contacto li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  list-style-type: none;
+  width: 30%;
+}
+
+/* slides */
+
 .slider {
   width: 100%;
-  height: 70%;
+  height: 50%;
   border-radius: 10px;
   border: 1px solid black;
   margin: 10px auto;
@@ -138,7 +237,7 @@ body {}
 
 .slide {
   min-width: 100%;
-  height: 300px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,7 +255,9 @@ body {}
   height: 100%;
   object-fit: cover;
 }
-
+.morada p{
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.5rem);
+}
 /* CSS PARA NAvegação manual */
 
 .navega-mano {
@@ -181,4 +282,65 @@ body {}
 
 .manual-btn:hover {
   background: #000000;
+}
+@media (max-width: 1200px) {
+  .sobre {
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .contacto li,
+  .redes ul li {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    height: 300px;
+  }
+
+  .map iframe {
+    height: 40vh;
+  }
+
+  .contactos {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  
+  .sobre .sobre-text,
+  .sobre .imagem_pd {
+    width: 100%;
+    margin: 20px 0;
+  }
+  .sobre .sobre-text h1 {
+    font-size: clamp(1.2rem, 1.5vw + 1rem, 2rem);
+  }
+
+  .sobre .sobre-text p {
+    font-size: clamp(0.8rem, 1vw + 0.5rem, 1.2rem);
+  }
+
+  .map iframe {
+    height: 30vh;
+  }
+
+  .slider {
+    height: 200px;
+  }
+}
+
+@media (max-width: 400px) {
+  .favoritos {
+    min-width: 60px;
+    font-size: 0.8em;
+  }
+
+  .contactos img {
+    width: 20px;
+  }
 }

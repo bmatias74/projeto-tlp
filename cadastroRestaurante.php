@@ -39,9 +39,10 @@ $morada = mysqli_real_escape_String($conexao, $_POST["morada"]);
 $facebook =  $_POST["facebook"];
 $twitter =  $_POST["twitter"];
 $instagram =  $_POST["instagram"];
+$site = $_POST["site"];
 
 // Primeiro, insira o registro básico do restaurante
-$query = "INSERT INTO restaurante (nome, email,telefone,telefone2,descricao,web_loc,facebook,twitter,instagram,morada) VALUES ('$nome', '$email','$telefone','$telefone2','$descricao','$localizacao','$facebook','$twitter','$instagram','$morada')";
+$query = "INSERT INTO restaurante (nome, email,telefone,telefone2,descricao,web_loc,facebook,twitter,instagram,morada,siter) VALUES ('$nome', '$email','$telefone','$telefone2','$descricao','$localizacao','$facebook','$twitter','$instagram','$morada','$site')";
 mysqli_query($conexao, $query);
 
 // Recupera o ID do último restaurante inserido

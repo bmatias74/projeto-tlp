@@ -35,7 +35,7 @@
         <!-- Nome-->
         <div>
           <label for="nome">Nome<span class="obrigatorio">*</span></label>
-          <input type="text" placeholder="Insira o nome completo" name="Nome" required>
+          <input type="text" placeholder="Insira o nome completo" name="Nome" id="email" required>
         </div>
         <!-- Email-->
         <div>
@@ -88,19 +88,23 @@
         <!-- Facebook-->
         <div>
           <label for="facebook">Facebook</label>
-          <input type="text" placeholder="Se tiver insira o facebook da empresa" name="facebook">
+          <input type="text" placeholder="Se tiver insira o facebook da empresa" id="facebook"  name="facebook">
         </div>
         <!--instagram -->
         <div>
           <label for="">Instagram</label>
-          <input type="text" placeholder="Se tiver insira o instagram da empresa" name="instagram">
+          <input type="text" placeholder="Se tiver insira o instagram da empresa"  id="instagram" name="instagram">
         </div>
         <!-- Twitter-->
         <div>
           <label for="Twitter">Twitter</label>
-          <input type="text" placeholder="Se tiver insira o twitter da empresa" name="twitter">
+          <input type="text" placeholder="Se tiver insira o twitter da empresa" id="twitter"  name="twitter">
         </div>
-
+        <!-- Site-->
+        <div>
+          <label for="Site">Site</label>
+          <input type="text" placeholder="Se tiver insira o site da empresa"  id="site"  name="site">
+        </div>
       </div>
       </div>
       <div class="radios">
@@ -117,6 +121,14 @@
         <div class="radio">
           <input value="N/A" type="checkbox" name="redes" id="facebookc">
           <label for="redes">Clique aqui se não houver facebook</label>
+        </div>
+        <div class="radio">
+          <input value="N/A" type="checkbox" name="redes" id="sitec">
+          <label for="redes">Clique aqui se não houver site</label>
+        </div>
+        <div class="radio">
+          <input value="N/A@gmail.com" type="checkbox" name="redes" id="emailc">
+          <label for="redes">Clique aqui se não houver Email</label>
         </div>
 
       </div>
@@ -197,11 +209,28 @@
         const face = document.getElementById('facebook');
         const instagramc = document.getElementById('instagramc');
         const twitterc = document.getElementById('twitterc');
+        const site = document.getElementById('site');
+        const sitec = document.getElementById('sitec');
+        const email = document.getElementById('email');
+        const emailc = document.getElementById('emailc');
         const facec = document.getElementById('facebookc');
 
         instagramc.addEventListener('change', function() {
           if (instagramc.checked) {
             instagram.value = instagramc.value;
+          }
+
+        });
+        
+        emailc.addEventListener('change', function() {
+          if (emailc.checked) {
+            email.value = emailc.value;
+          }
+
+        });
+        sitec.addEventListener('change', function() {
+          if (sitec.checked) {
+            site.value = sitec.value;
           }
 
         });

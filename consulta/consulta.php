@@ -44,6 +44,7 @@
                 <th>Email</th>
                 <th>Localização web</th>
                 <th>Morada</th>
+                <th>Site</th>
                 <th>Link do Instagram</th>
                 <th>Link do Twitter</th>
                 <th>Link do Facebook</th>
@@ -104,6 +105,7 @@
         echo "<td>{$linha["email"]}</td>";
         echo "<td class='map' >{$linha["web_loc"]}</td>";
         echo "<td>{$linha["morada"]}</td>";
+        echo "<td>{$linha["siter"]}</td>";
         echo "<td>{$linha["instagram"]}</td>";
         echo "<td>{$linha["twitter"]}</td>";
         echo "<td>{$linha["facebook"]}</td>";

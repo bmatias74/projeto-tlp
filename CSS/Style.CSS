@@ -364,6 +364,14 @@ footer p {
 }
 
 @media (max-width: 1160px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+  
+    .search-text {
+        font-size: 14px;
+    }
     .search-text {
         font-size: 14px;
     }

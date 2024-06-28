@@ -35,10 +35,11 @@ $morada = mysqli_real_escape_string($conexao, $_POST["morada"]);
 $facebook =  $_POST["facebook"];
 $twitter =  $_POST["twitter"];
 $instagram =  $_POST["instagram"];
+$site = $_POST["site"];
 $id = $_POST["id"]; 
 
-$stmt = $conexao->prepare("UPDATE restaurante SET nome = ?, telefone = ?, telefone2 = ?, email = ?, descricao = ?, web_loc= ?, morada = ?, facebook = ?, twitter = ?, instagram = ? WHERE id_restaurante = ?");
-$stmt->bind_param("ssssssssssi", $nome, $telefone, $telefone2, $email, $descricao, $localizacao, $morada, $facebook, $twitter, $instagram, $id);
+$stmt = $conexao->prepare("UPDATE restaurante SET nome = ?, telefone = ?, telefone2 = ?, email = ?, descricao = ?, web_loc= ?, morada = ?, facebook = ?, twitter = ?, instagram = ?, siter = ? WHERE id_restaurante = ?");
+$stmt->bind_param("sssssssssssi", $nome, $telefone, $telefone2, $email, $descricao, $localizacao, $morada, $facebook, $twitter, $instagram, $site, $id);
 $stmt->execute();
 
 $imageFields = ['image' => 'imagem_p', 'image2' => 'imagem_s1', 'image3' => 'imagem_s2', 'image4' => 'imagem_s3', 'image5' => 'imagem_s4'];
