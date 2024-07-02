@@ -36,9 +36,14 @@ body {}
 
 .mainR {
   background-color: var(--cpadrao);
+  height: auto;
+  min-width: 100vw;
 }
 
-#mainR {}
+#mainR {
+ min-width: 100vw;
+  min-height: 100vh;
+}
 
 .conjunto-logo {
   display: flex;
