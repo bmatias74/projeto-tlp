@@ -37,11 +37,11 @@ body {}
 .mainR {
   background-color: var(--cpadrao);
   height: auto;
-  min-width: 100vw;
+
 }
 
 #mainR {
- min-width: 100vw;
+
   min-height: 100vh;
 }
 
@@ -217,7 +217,7 @@ body {}
 
 .slider {
   width: 100%;
-  height: 50%;
+  height: 80%;
   border-radius: 10px;
   border: 1px solid black;
   margin: 10px auto;
@@ -242,7 +242,7 @@ body {}
 
 .slide {
   min-width: 100%;
-  height: 200px;
+  height: 50vmin;
   display: flex;
   align-items: center;
   justify-content: center;
