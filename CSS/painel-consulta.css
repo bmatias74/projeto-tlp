@@ -47,33 +47,27 @@ input[type="submit"], .button {
 }
 .table{
     overflow: auto;
-   
 
 }
 table {
     width: 100%;
     border-collapse: collapse;
-    
 }
 
 th, td {
     padding: 5px;
     border: 1px solid #ccc;
 
-
 }
 .map iframe{
     width:  100px;
     height: 100px;
-
 }
 thead, .tcabeca {
     background-color: var(--cpadrao);
     color: #fff;
 }
-tbody td{
-    height: 100px;
-}
+
 tbody tr:nth-child(even) {
     background-color: #ffffff;
 }
